@@ -1,168 +1,60 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SLM Projects — Tema em azul & lilás</title>
-  <meta name="description" content="Site moderno para expor um tema com textos e fotos — consulta pública, sem logins.">
-  <meta name="color-scheme" content="light dark" />
-  <meta property="og:title" content="SLM Projects — Tema em azul & lilás" />
-  <meta property="og:description" content="Textos e fotos para consulta de todos. Sem logins. Perfil moderno." />
-  <meta property="og:type" content="website" />
-  <link rel="stylesheet" href="styles-azul-lilas.css">
-  <style>
-    /* ajustes pequenos específicos da página (mantém mínimo) */
-    .logo { font-weight: 900; letter-spacing: -0.02em; }
-    .cards { display: grid; gap: var(--space-4); grid-template-columns: repeat(12, 1fr); }
-    .cards .card { grid-column: span 12; }
-    @media (min-width: 768px) { .cards .card { grid-column: span 6; } }
-    @media (min-width: 1100px) { .cards .card { grid-column: span 4; } }
-  </style>
+  <title>Temas & Textos</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Coletânea de temas sociais organizada como cards: cada imagem e título abre um texto completo." />
 </head>
 <body>
-  <a href="#conteudo" class="btn ghost" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Saltar para conteúdo</a>
-
-  <!-- Cabeçalho -->
-  <header class="header">
-    <div class="container nav">
-      <div class="logo text-gradient" aria-label="Página inicial">SLM Projects</div>
-      <nav style="margin-left:auto;display:flex;gap:.25rem;flex-wrap:wrap" aria-label="Navegação principal">
-        <a href="#tema">Tema</a>
-        <a href="#textos">Textos</a>
-        <a href="#galeria">Galeria</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
+  <header>
+    <div class="container">
+      <div class="brand">Temas & Textos</div>
+      <p>Selecione um tema para ler o conteúdo completo.</p>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container">
-      <div class="eyebrow">Consulta pública</div>
-      <h1>Site moderno em <span class="text-gradient">azul & lilás</span></h1>
-      <p class="lead">Espaço simples para expor um tema com clareza — apenas textos e fotografias, sem logins nem formulários complicados.</p>
-      <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap">
-        <a class="btn" href="#textos">Ler textos</a>
-        <a class="btn secondary" href="#galeria">Ver galeria</a>
-      </div>
-    </div>
-  </section>
+  <main class="container">
+    <section class="grid">
 
-  <main id="conteudo">
-    <!-- Secção Tema / Sobre -->
-    <section id="tema" class="section">
-      <div class="container article" data-reveal>
-        <h2 class="section-title">Sobre o tema</h2>
-        <p>Este site apresenta um tema para consulta aberta. A informação é organizada por secções curtas e objetivas, com tipografia legível e uma paleta <em>azul & lilás</em> que dá destaque ao conteúdo.</p>
-        <p class="muted">Nota: Podes editar os textos abaixo conforme necessário. Mantém a estrutura para uma navegação clara.</p>
-        <div class="quote" style="margin-top:1rem" aria-label="Citação em destaque">
-          "Conhecimento acessível é conhecimento útil." — <strong>SLM Projects</strong>
+      <a class="card" href="posts/idadismo.html">
+        <img src="https://images.unsplash.com/photo-1532336414038-cf19250c5757?q=80&w=1200&auto=format&fit=crop" alt="Mãos de gerações diferentes" />
+        <div class="content">
+          <h2>Idadismo</h2>
+          <p>O preconceito com base na idade afeta jovens e idosos e limita oportunidades.</p>
         </div>
-      </div>
-    </section>
+      </a>
 
-    <!-- Secção Textos (cards) -->
-    <section id="textos" class="section">
-      <div class="container">
-        <h2 class="section-title">Textos</h2>
-        <div class="cards" data-reveal>
-          <article class="card">
-            <div class="badge lilac">Introdução</div>
-            <h3 class="title">1) Contexto geral</h3>
-            <p class="subtitle">Uma visão rápida do tema: objetivos, âmbito e impacto.</p>
-            <p>Utiliza esta página para explicar o porquê do tema existir, qual a sua relevância e como a informação está organizada.</p>
-            <div style="margin-top:.75rem"><a class="btn ghost" href="#">Ler mais</a></div>
-          </article>
-
-          <article class="card">
-            <div class="badge">Detalhe</div>
-            <h3 class="title">2) Desenvolvimento</h3>
-            <p class="subtitle">Secção para texto mais longo, dados e referências.</p>
-            <p>Divide o conteúdo com subtítulos (<code>&lt;h3&gt;</code>) e usa <span class="text-lilac">.article</span> quando precisares de mais profundidade e margens confortáveis.</p>
-            <div style="margin-top:.75rem"><a class="btn ghost" href="#">Ler mais</a></div>
-          </article>
-
-          <article class="card">
-            <div class="badge lilac">Resumo</div>
-            <h3 class="title">3) Conclusões</h3>
-            <p class="subtitle">Síntese e próximos passos.</p>
-            <p>Termina com pontos-chave, recomendações e eventuais anexos ou ligações para documentos.</p>
-            <div style="margin-top:.75rem"><a class="btn ghost" href="#">Ler mais</a></div>
-          </article>
+      <a class="card" href="posts/racismo.html">
+        <img src="https://images.unsplash.com/photo-1542219550-37153d387c12?q=80&w=1200&auto=format&fit=crop" alt="Pessoas com braços cruzados de tons diversos" />
+        <div class="content">
+          <h2>Racismo</h2>
+          <p>Estruturas e atitudes que discriminam com base em cor/etnia e perpetuam desigualdades.</p>
         </div>
-      </div>
-    </section>
+      </a>
 
-    <!-- Secção Galeria -->
-    <section id="galeria" class="section">
-      <div class="container">
-        <h2 class="section-title">Galeria</h2>
-        <p class="lead">Imagens ilustrativas do tema (substitui pelos teus ficheiros quando quiseres).</p>
-        <div class="gallery-grid" style="margin-top:1rem" data-reveal>
-          <figure class="item"><img src="https://picsum.photos/seed/azul1/800/600" alt="Fotografia ilustrativa 1"></figure>
-          <figure class="item"><img src="https://picsum.photos/seed/lilas2/800/600" alt="Fotografia ilustrativa 2"></figure>
-          <figure class="item"><img src="https://picsum.photos/seed/tema3/800/600" alt="Fotografia ilustrativa 3"></figure>
-          <figure class="item"><img src="https://picsum.photos/seed/tema4/800/600" alt="Fotografia ilustrativa 4"></figure>
-          <figure class="item"><img src="https://picsum.photos/seed/tema5/800/600" alt="Fotografia ilustrativa 5"></figure>
-          <figure class="item"><img src="https://picsum.photos/seed/tema6/800/600" alt="Fotografia ilustrativa 6"></figure>
+      <a class="card" href="posts/lgbtfobia.html">
+        <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop" alt="Bandeira arco-íris" />
+        <div class="content">
+          <h2>LGBTQ+fobia</h2>
+          <p>Violência e exclusão contra pessoas LGBTQIA+, e caminhos de inclusão.</p>
         </div>
-      </div>
-    </section>
+      </a>
 
-    <!-- Secção Documentos (opcional) -->
-    <section id="documentos" class="section">
-      <div class="container">
-        <h2 class="section-title">Documentos</h2>
-        <p class="lead">Liga aqui PDFs ou anexos relevantes ao tema.</p>
-        <table class="table" style="margin-top:1rem" data-reveal>
-          <thead>
-            <tr><th>Título</th><th>Tamanho</th><th>Ação</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Nota técnica (exemplo)</td>
-              <td>—</td>
-              <td><a class="btn ghost" href="#">Abrir</a></td>
-            </tr>
-            <tr>
-              <td>Relatório síntese (exemplo)</td>
-              <td>—</td>
-              <td><a class="btn ghost" href="#">Abrir</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+      <a class="card" href="posts/pessoas-com-deficiencia.html">
+        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1200&auto=format&fit=crop" alt="Pessoa utilizando cadeira de rodas em uma passarela acessível" />
+        <div class="content">
+          <h2>Pessoas com deficiência</h2>
+          <p>Barreiras e soluções para participação plena e acessível.</p>
+        </div>
+      </a>
 
-    <!-- Secção Contacto -->
-    <section id="contacto" class="section">
-      <div class="container">
-        <h2 class="section-title">Contacto</h2>
-        <p>Para sugestões sobre o conteúdo publicado:</p>
-        <p><a class="btn" href="mailto:info@exemplo.pt">info@exemplo.pt</a></p>
-        <p class="muted">Não é necessário criar conta ou iniciar sessão para consultar o site.</p>
-      </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container" style="display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap">
-      <small class="muted">© <span id="ano"></span> SLM Projects</small>
-      <a href="#" class="btn ghost">Voltar ao topo</a>
-    </div>
+  <footer>
+    <div class="container">© 2025 • Temas & Textos</div>
   </footer>
-
-  <script>
-    // Atualiza ano no rodapé
-    document.getElementById('ano').textContent = new Date().getFullYear();
-
-    // Revela elementos ao entrar no viewport
-    const revealTargets = document.querySelectorAll('[data-reveal]');
-    const obs = new IntersectionObserver((entries) => {
-      for (const e of entries) if (e.isIntersecting) { e.target.classList.add('reveal'); obs.unobserve(e.target); }
-    }, { threshold: 0.08 });
-    revealTargets.forEach((el) => obs.observe(el));
-  </script>
-  <noscript><div class="container" style="padding:1rem" role="status">JavaScript desativado: o conteúdo continua acessível.</div></noscript>
 </body>
 </html>
