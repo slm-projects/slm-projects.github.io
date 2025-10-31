@@ -1,134 +1,100 @@
-<!doctype html>
-<html lang="pt-PT">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Temas — Inclusão e Responsabilidade Social</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body id="topo">
-  <header>
-    <p class="titulo">Inclusão & Responsabilidade Social</p>
-    <p class="sub">Temas — clique para ver mais (sem texto no índice)</p>
-  </header>
+:root{
+  --bg: #f7fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted:#64748b;
+  --brand:#2563eb;
+  --ring: rgba(37, 99, 235, .35);
+  --border:#e2e8f0;
+}
 
-  <main>
-    <section class="lista">
+/* Reset básico e tipografia */
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
 
-      <!-- Só cartões (sem texto). Se necessário, futuramente cada cartão pode ligar a uma ficha/tema. -->
+/* Cabeçalho fixo */
+header{
+  position:sticky; top:0; z-index:20;
+  background:rgba(255,255,255,.85);
+  -webkit-backdrop-filter:saturate(180%) blur(8px);
+  backdrop-filter:saturate(180%) blur(8px);
+  border-bottom:1px solid var(--border);
+  padding:.75rem 1rem;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.titulo{font-size:1rem; font-weight:700; letter-spacing:.2px; margin:0}
+.sub{font-size:.9rem;color:var(--muted); margin:0}
 
-      <details class="tema" id="idadismo">
-        <summary>
-          <img class="thumb" src="imagens/idadismo.png" alt="Imagem alusiva ao tema Idadismo" loading="lazy" />
-          <span class="cabeca">
-            <h2>Idadismo</h2>
-            <p>Preconceito com base na idade</p>
-          </span>
-          <svg class="indicador" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6 4a1 1 0 0 1 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6A1 1 0 0 1 6 16.586L11.586 11 6 5.414A1 1 0 0 1 6 4z" clip-rule="evenodd"/></svg>
-        </summary>
-      </details>
+/* Layout principal */
+main{max-width:1024px; margin:0 auto; padding:1rem}
+.lista{display:grid; gap:1rem; grid-template-columns:1fr}
+/* 2 colunas em ecrãs médios; 3 colunas em grandes */
+@media (min-width: 640px){.lista{grid-template-columns:repeat(2, minmax(0, 1fr))}}
+@media (min-width: 960px){.lista{grid-template-columns:repeat(3, minmax(0, 1fr))}}
 
-      <details class="tema" id="racismo">
-        <summary>
-          <img class="thumb" src="imagens/racismo.png" alt="Imagem alusiva ao tema Racismo" loading="lazy" />
-          <span class="cabeca"><h2>Racismo</h2><p>—</p></span>
-          <svg class="indicador" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6 4a1 1 0 0 1 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6A1 1 0 0 1 6 16.586L11.586 11 6 5.414A1 1 0 0 1 6 4z" clip-rule="evenodd"/></svg>
-        </summary>
-      </details>
+/* Cartões/temas expansíveis */
+details.tema{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:.875rem;
+  overflow:hidden;
+  box-shadow:0 1px 1px rgba(0,0,0,.03);
+}
+details.tema[open]{box-shadow:0 4px 16px rgba(2,6,23,.06)}
 
-      <details class="tema" id="sexismo">
-        <summary>
-          <img class="thumb" src="imagens/sexismo.png" alt="Imagem alusiva ao tema Sexismo" loading="lazy" />
-          <span class="cabeca"><h2>Sexismo</h2><p>—</p></span>
-          <svg class="indicador" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6 4a1 1 0 0 1 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6A1 1 0 0 1 6 16.586L11.586 11 6 5.414A1 1 0 0 1 6 4z" clip-rule="evenodd"/></svg>
-        </summary>
-      </details>
+/* Cabeçalho do tema (mais alto) */
+summary{
+  list-style:none; cursor:pointer; user-select:none;
+  display:flex; align-items:center; gap:1rem;
+  padding:1.1rem 1rem;            /* + altura */
+  min-height:96px;                 /* garante altura do cartão */
+}
+summary::-webkit-details-marker{display:none}
+summary:focus-visible{outline:2px solid var(--brand); outline-offset:4px; border-radius:.5rem}
+summary:hover{background:#f8fafc}
 
-      <details class="tema" id="lgbtqfobia">
-        <summary>
-          <img class="thumb" src="imagens/lgbtq.png" alt="Imagem alusiva ao tema LGBTQ+fobia" loading="lazy" />
-          <span class="cabeca"><h2>LGBTQ+fobia</h2><p>—</p></span>
-          <svg class="indicador" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6 4a1 1 0 0 1 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6A1 1 0 0 1 6 16.586L11.586 11 6 5.414A1 1 0 0 1 6 4z" clip-rule="evenodd"/></svg>
-        </summary>
-      </details>
+/* Miniatura maior (72x72) */
+.thumb{
+  width:72px; height:72px; object-fit:cover; flex:0 0 72px;
+  border-radius:.75rem; border:1px solid var(--border); background:#f1f5f9;
+}
+.cabeca{display:flex; flex-direction:column; gap:.15rem}
+.cabeca h2{font-size:1.05rem; margin:0}
+.cabeca p{font-size:.9rem; margin:0; color:var(--muted)}
 
-      <details class="tema" id="deficiencia">
-        <summary>
-          <img class="thumb" src="imagens/deficiencia.png" alt="Imagem alusiva à discriminação de pessoas com deficiência" loading="lazy" />
-          <span class="cabeca"><h2>Discriminação contra pessoas com deficiência</h2><p>—</p></span>
-          <svg class="indicador" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6 4a1 1 0 0 1 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6A1 1 0 0 1 6 16.586L11.586 11 6 5.414A1 1 0 0 1 6 4z" clip-rule="evenodd"/></svg>
-        </summary>
-      </details>
+.indicador{margin-left:auto; width:20px; height:20px; color:var(--muted); transition:transform .2s ease}
+details[open] .indicador{transform:rotate(90deg)}
 
-      <details class="tema" id="xenofobia">
-        <summary>
-          <img class="thumb" src="imagens/xenofobia.png" alt="Imagem alusiva à xenofobia e discriminação de imigrantes" loading="lazy" />
-          <span class="cabeca"><h2>Xenofobia e discriminação contra imigrantes</h2><p>—</p></span>
-          <svg class="indicador" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6 4a1 1 0 0 1 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6A1 1 0 0 1 6 16.586L11.586 11 6 5.414A1 1 0 0 1 6 4z" clip-rule="evenodd"/></svg>
-        </summary>
-      </details>
+/* Conteúdo (quando existir) */
+article{padding:0 1rem 1rem}
+article h3{margin:1rem 0 .5rem; font-size:1rem}
+article p{line-height:1.6}
+article ul{margin:.25rem 0 .75rem 1rem}
+.nota{color:var(--muted); font-size:.95rem}
 
-      <details class="tema" id="gordofobia">
-        <summary>
-          <img class="thumb" src="imagens/gordofobia.png" alt="Imagem alusiva à gordofobia" loading="lazy" />
-          <span class="cabeca"><h2>Gordofobia e preconceito contra corpos não normativos</h2><p>—</p></span>
-          <svg class="indicador" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6 4a1 1 0 0 1 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6A1 1 0 0 1 6 16.586L11.586 11 6 5.414A1 1 0 0 1 6 4z" clip-rule="evenodd"/></svg>
-        </summary>
-      </details>
+/* Botão flutuante para voltar ao topo */
+a.botao-topo{
+  position:fixed; right:1rem; bottom:1rem;
+  background:var(--brand); color:#fff; text-decoration:none;
+  padding:.6rem .8rem; border-radius:.75rem;
+  box-shadow:0 6px 16px var(--ring); font-size:.9rem;
+}
+a.botao-topo:hover{opacity:.95}
 
-      <details class="tema" id="classismo">
-        <summary>
-          <img class="thumb" src="imagens/classismo.png" alt="Imagem alusiva ao classismo e desigualdade socioeconómica" loading="lazy" />
-          <span class="cabeca"><h2>Classismo e desigualdade socioeconómica</h2><p>—</p></span>
-          <svg class="indicador" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6 4a1 1 0 0 1 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6A1 1 0 0 1 6 16.586L11.586 11 6 5.414A1 1 0 0 1 6 4z" clip-rule="evenodd"/></svg>
-        </summary>
-      </details>
+/* Modo escuro (opcional, automático) */
+@media (prefers-color-scheme: dark){
+  :root{--bg:#0b1220; --card:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --border:#1f2937}
+  header{background:rgba(15,23,42,.8); border-color:var(--border)}
+  summary:hover{background:#111827}
+}
 
-      <details class="tema" id="religiao">
-        <summary>
-          <img class="thumb" src="imagens/religiao.png" alt="Imagem alusiva à discriminação religiosa e intolerância" loading="lazy" />
-          <span class="cabeca"><h2>Discriminação religiosa e intolerância</h2><p>—</p></span>
-          <svg class="indicador" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6 4a1 1 0 0 1 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6A1 1 0 0 1 6 16.586L11.586 11 6 5.414A1 1 0 0 1 6 4z" clip-rule="evenodd"/></svg>
-        </summary>
-      </details>
-
-      <details class="tema" id="indigenas">
-        <summary>
-          <img class="thumb" src="imagens/indigenas.png" alt="Imagem alusiva a populações indígenas e minorias étnicas" loading="lazy" />
-          <span class="cabeca"><h2>Preconceito contra populações indígenas e minorias étnicas</h2><p>—</p></span>
-          <svg class="indicador" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6 4a1 1 0 0 1 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6A1 1 0 0 1 6 16.586L11.586 11 6 5.414A1 1 0 0 1 6 4z" clip-rule="evenodd"/></svg>
-        </summary>
-      </details>
-
-      <details class="tema" id="neurodivergentes">
-        <summary>
-          <img class="thumb" src="imagens/neurodivergentes.png" alt="Imagem alusiva a pessoas neurodivergentes" loading="lazy" />
-          <span class="cabeca"><h2>Preconceito contra pessoas neurodivergentes</h2><p>—</p></span>
-          <svg class="indicador" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6 4a1 1 0 0 1 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6A1 1 0 0 1 6 16.586L11.586 11 6 5.414A1 1 0 0 1 6 4z" clip-rule="evenodd"/></svg>
-        </summary>
-      </details>
-
-      <details class="tema" id="semabrigo">
-        <summary>
-          <img class="thumb" src="imagens/sem-abrigo.png" alt="Imagem alusiva a pessoas em situação de sem-abrigo" loading="lazy" />
-          <span class="cabeca"><h2>Discriminação contra pessoas em situação de rua (sem‑abrigo)</h2><p>—</p></span>
-          <svg class="indicador" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6 4a1 1 0 0 1 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6A1 1 0 0 1 6 16.586L11.586 11 6 5.414A1 1 0 0 1 6 4z" clip-rule="evenodd"/></svg>
-        </summary>
-      </details>
-
-      <details class="tema" id="profissionais">
-        <summary>
-          <img class="thumb" src="imagens/profissionais.png" alt="Imagem alusiva a profissionais de áreas diversas" loading="lazy" />
-          <span class="cabeca"><h2>Preconceito contra profissionais de determinadas áreas</h2><p>Trabalho informal, trabalho sexual e outros</p></span>
-          <svg class="indicador" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M6 4a1 1 0 0 1 1.707-.707l6 6a1 1 0 0 1 0 1.414l-6 6A1 1 0 0 1 6 16.586L11.586 11 6 5.414A1 1 0 0 1 6 4z" clip-rule="evenodd"/></svg>
-        </summary>
-      </details>
-
-      <!-- Pode adicionar mais temas seguindo o mesmo padrão. -->
-
-    </section>
-  </main>
-
-  <a class="botao-topo" href="#topo" aria-label="Ir para o topo">Topo</a>
-</body>
-</html>
+/* Acessibilidade: reduzir animações se preferido */
+@media (prefers-reduced-motion: reduce){
+  .indicador{transition:none}
+}
