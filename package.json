@@ -1,0 +1,22 @@
+{
+  "name": "responsabilidade-social",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.27.0",
+    "lucide-react": "^0.452.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10",
+    "tailwindcss": "^3.4.14",
+    "postcss": "^8.4.47",
+    "autoprefixer": "^10.4.20",
+    "@vitejs/plugin-react": "^4.3.1"
+  }
+}
