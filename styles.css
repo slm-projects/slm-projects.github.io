@@ -1,129 +1,36 @@
-/**
- * styles.css — Versão completa
- * - Cabeçalho fixo
- * - Grelha 1/2/3 colunas
- * - Cartões mais altos (thumb 88x88)
- * - Acessibilidade (focus visível, reduced motion)
- * - Dark mode automático
- */
-
-:root{
-  --bg: #f7fafc;
-  --card: #ffffff;
-  --text: #0f172a;
-  --muted:#64748b;
-  --brand:#2563eb;
-  --ring: rgba(37, 99, 235, .35);
-  --border:#e2e8f0;
+/* Grelha: 1/2/3 colunas, cartões largos */
+.lista{
+  display:grid;
+  gap:1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
-/* Reset básico e tipografia */
-html{scroll-behavior:smooth}
-*,*::before,*::after{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-img{max-width:100%; display:block}
-
-/* Cabeçalho fixo */
-header{
-  position:sticky; top:0; z-index:20;
-  background:rgba(255,255,255,.85);
-  -webkit-backdrop-filter:saturate(180%) blur(8px);
-  backdrop-filter:saturate(180%) blur(8px);
-  border-bottom:1px solid var(--border);
-  padding:.75rem 1rem;
-  display:flex; align-items:center; justify-content:space-between;
-}
-.titulo{font-size:1rem; font-weight:700; letter-spacing:.2px; margin:0}
-.sub{font-size:.9rem;color:var(--muted); margin:0}
-
-/* Layout principal */
-main{max-width:1100px; margin:0 auto; padding:1rem}
-
-/* Grelha responsiva: 1/2/3 colunas */
-.lista{display:grid; gap:1rem; grid-template-columns:1fr}
-@media (min-width: 640px){.lista{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (min-width: 980px){.lista{grid-template-columns:repeat(3,minmax(0,1fr))}}
-
-/* Cartões (details) */
-details.tema{
+/* Cartão link (imagem em cima, texto em baixo) */
+.card{
+  display:flex; flex-direction:column; height:100%;
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:.875rem;
-  overflow:hidden;
-  box-shadow:0 1px 1px rgba(0,0,0,.03);
+  border-radius: .9rem;
+  overflow: hidden;
+  box-shadow: 0 1px 1px rgba(0,0,0,.03);
+  text-decoration:none; color:inherit;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
 }
-details.tema[open]{box-shadow:0 4px 16px rgba(2,6,23,.06)}
+.card:hover{ transform: translateY(-2px); box-shadow:0 8px 24px rgba(2,6,23,.08); background:#f8fafc; }
+.card:focus-visible{ outline:3px solid var(--brand); outline-offset:3px; }
 
-/* Cabeçalho do cartão (summary) — mais alto */
-summary{
-  list-style:none; cursor:pointer; user-select:none;
-  display:flex; align-items:center; gap:1rem;
-  padding:1.1rem 1rem;
-  min-height:110px; /* altura mínima do cartão */
-}
-summary::-webkit-details-marker{display:none}
-summary:hover{background:#f8fafc}
-summary:focus-visible{outline:2px solid var(--brand); outline-offset:4px; border-radius:.5rem}
-
-/* Miniatura maior */
-.thumb{
-  width:88px; height:88px; object-fit:cover; flex:0 0 88px;
-  border-radius:.75rem; border:1px solid var(--border); background:#f1f5f9;
-}
-.cabeca{display:flex; flex-direction:column; gap:.15rem}
-.cabeca h2{font-size:1.1rem; margin:0}
-.cabeca p{font-size:.9rem; margin:0; color:var(--muted)}
-
-.indicador{margin-left:auto; width:20px; height:20px; color:var(--muted); transition:transform .2s ease}
-details[open] .indicador{transform:rotate(90deg)}
-
-/* Conteúdo dentro do cartão (quando existir) */
-article{padding:0 1rem 1rem}
-article h3{margin:1rem 0 .5rem; font-size:1rem}
-article p{line-height:1.6}
-article ul{margin:.25rem 0 .75rem 1rem}
-
-/* Secção com link para ficha completa */
-.acao{padding:0 1rem 1rem}
-.link-ficha{color:var(--brand); font-weight:600; text-decoration:none}
-.link-ficha:hover{text-decoration:underline}
-
-/* Variante: cartão como link (se trocar <details> por <a class="card">) */
-a.card{
-  display:flex; align-items:center; gap:1rem; padding:1.1rem 1rem; min-height:110px;
-  background:var(--card); border:1px solid var(--border); border-radius:.875rem;
-  text-decoration:none; color:inherit; box-shadow:0 1px 1px rgba(0,0,0,.03);
-}
-a.card:hover{background:#f8fafc; box-shadow:0 4px 16px rgba(2,6,23,.06)}
-
-/* Botão flutuante para voltar ao topo */
-a.botao-topo{
-  position:fixed; right:1rem; bottom:1rem;
-  background:var(--brand); color:#fff; text-decoration:none;
-  padding:.6rem .8rem; border-radius:.75rem;
-  box-shadow:0 6px 16px var(--ring); font-size:.9rem;
-}
-a.botao-topo:hover{opacity:.95}
-
-/* Página de tema (fichas) */
-h1{font-size:1.5rem; margin:1rem 0 .5rem}
-.hero{width:96px; height:96px; object-fit:cover; border-radius:.875rem; border:1px solid var(--border); background:#f1f5f9}
-.back{color:var(--muted); text-decoration:none}
-.back:hover{color:var(--text); text-decoration:underline}
-
-/* Dark mode automático */
-@media (prefers-color-scheme: dark){
-  :root{--bg:#0b1220; --card:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --border:#1f2937}
-  header{background:rgba(15,23,42,.8); border-color:var(--border)}
-  summary:hover{background:#111827}
+/* Imagem do cartão */
+.card .media{
+  width:100%;
+  aspect-ratio: 16 / 9;   /* fica sempre no mesmo formato */
+  object-fit: cover;
+  background:#f1f5f9;
 }
 
-/* Acessibilidade: reduzir animações se preferido */
-@media (prefers-reduced-motion: reduce){
-  .indicador{transition:none}
+/* Texto do cartão */
+.card .conteudo{ padding:.9rem 1rem 1rem; }
+.card h3{ font-size:1.2rem; margin:.1rem 0 .35rem; }
+.card .sumario{
+  margin:0; color:var(--muted); line-height:1.5;
+  display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; /* corta a 3 linhas */
 }
