@@ -1,410 +1,168 @@
-<!-- =========================
-  style.css (colocar em /assets/style.css)
-========================= -->
-/* Variáveis e tema */
-:root{ --bg:#ffffff; --fg:#0f172a; --muted:#64748b; --brand:#0ea5e9; --accent:#22c55e; --card:#f1f5f9; --border:#e2e8f0; --radius:14px }
-@media (prefers-color-scheme: dark){ :root{ --bg:#0b1220; --fg:#e2e8f0; --muted:#94a3b8; --card:#0f172a; --border:#1f2a44 } }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Ubuntu,sans-serif;background:var(--bg);color:var(--fg)}
-.container{max-width:1200px;margin:auto;padding:0 1rem}
-img{display:block;max-width:100%;height:auto}
-a{text-decoration:none;color:inherit}
-
-/* Header */
-header{position:sticky;top:0;background:rgba(255,255,255,.8);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--border);z-index:50}
-@media (prefers-color-scheme: dark){header{background:rgba(11,18,32,.6)}}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
-.brand{display:flex;gap:.7rem;align-items:center;font-weight:800}
-.logo{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--accent));display:grid;place-items:center;color:#fff}
-.nav a.link{margin-left:1rem;color:var(--fg);font-weight:600}
-.nav a.link:hover{color:var(--brand)}
-
-/* Hero */
-.hero{padding:4rem 0 2rem;text-align:center}
-.hero h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.1;margin:.3rem 0 1rem}
-.hero p{color:var(--muted);max-width:70ch;margin:.5rem auto}
-.pill{display:inline-block;background:var(--card);border:1px solid var(--border);color:var(--muted);padding:.35rem .6rem;border-radius:999px;font-size:.85rem}
-
-/* Cards grid */
-.grid{display:grid;gap:1rem}
-@media(min-width:680px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}.grid.cols-2{grid-template-columns:repeat(2,1fr)}}
-.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
-.card .media{aspect-ratio: 16 / 9; background:#000; overflow:hidden}
-.card .media img{width:100%;height:100%;object-fit:cover}
-.card .body{padding:1rem}
-.card .body h3{margin:.2rem 0 .4rem;font-size:1.1rem}
-.card .meta{color:var(--muted);font-size:.9rem}
-
-/* Footer */
-footer{border-top:1px solid var(--border);padding:2rem 0;color:var(--muted);margin-top:2rem}
-
-/* Página de Tema */
-.hero.theme{display:grid;gap:1rem;align-items:center;text-align:left}
-@media(min-width:980px){.hero.theme{grid-template-columns:1.1fr .9fr}}
-.hero .cover{aspect-ratio: 2 / 1;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border)}
-.main{display:grid;gap:1.5rem}
-@media(min-width:980px){.main{grid-template-columns:280px 1fr}}
-.toc{position:sticky;top:90px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;height:max-content}
-.toc h4{margin:.2rem 0 .6rem}
-.toc a{display:block;color:var(--muted);padding:.25rem 0}
-.toc a:hover{color:var(--brand)}
-.section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1rem}
-.section h2{margin:.2rem 0 1rem}
-.section ul{margin:.2rem 0 0;padding-left:1.2rem}
-
-.nav-nextprev{display:flex;justify-content:space-between;gap:1rem;margin-top:1rem}
-.nav-nextprev a{flex:1;text-align:center;border:1px solid var(--border);border-radius:var(--radius);padding:.8rem;background:var(--card);font-weight:600}
-
-/* Acessibilidade base */
-.skip{position:absolute;left:-9999px}
-.skip:focus{left:1rem;top:1rem;background:var(--brand);color:#fff;padding:.5rem .75rem;border-radius:.5rem;z-index:1000}
-
-
-<!-- =========================
-  index.html  (Homepage — Landing)
-========================= -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SML | Responsabilidade Social</title>
-  <meta name="description" content="Hub de responsabilidade social: temas, direitos, impactos e ações práticas. Por SML." />
-  <link rel="stylesheet" href="assets/style.css" />
+  <title>SLM Projects — Tema em azul & lilás</title>
+  <meta name="description" content="Site moderno para expor um tema com textos e fotos — consulta pública, sem logins.">
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:title" content="SLM Projects — Tema em azul & lilás" />
+  <meta property="og:description" content="Textos e fotos para consulta de todos. Sem logins. Perfil moderno." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="styles-azul-lilas.css">
+  <style>
+    /* ajustes pequenos específicos da página (mantém mínimo) */
+    .logo { font-weight: 900; letter-spacing: -0.02em; }
+    .cards { display: grid; gap: var(--space-4); grid-template-columns: repeat(12, 1fr); }
+    .cards .card { grid-column: span 12; }
+    @media (min-width: 768px) { .cards .card { grid-column: span 6; } }
+    @media (min-width: 1100px) { .cards .card { grid-column: span 4; } }
+  </style>
 </head>
 <body>
-  <a class="skip" href="#conteudo">Saltar para o conteúdo</a>
-  <header>
-    <div class="container nav" role="navigation" aria-label="Principal">
-      <div class="brand"><div class="logo">SML</div><span>Responsabilidade Social</span></div>
-      <nav>
-        <a class="link" href="/">Início</a>
-        <a class="link" href="direitos.html">Direitos</a>
-        <a class="link" href="impactos.html">Impactos</a>
-        <a class="link" href="sociedade-empresas.html">Sociedade & Empresas</a>
-        <a class="link" href="papel-individual.html">Papel Individual</a>
-        <a class="link" href="transparencia.html">Transparência</a>
-        <a class="link" href="recursos.html">Recursos</a>
-        <a class="link" href="faq.html">FAQ</a>
-        <a class="link" href="contacto.html">Contacto</a>
+  <a href="#conteudo" class="btn ghost" style="position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden;">Saltar para conteúdo</a>
+
+  <!-- Cabeçalho -->
+  <header class="header">
+    <div class="container nav">
+      <div class="logo text-gradient" aria-label="Página inicial">SLM Projects</div>
+      <nav style="margin-left:auto;display:flex;gap:.25rem;flex-wrap:wrap" aria-label="Navegação principal">
+        <a href="#tema">Tema</a>
+        <a href="#textos">Textos</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#contacto">Contacto</a>
       </nav>
     </div>
   </header>
 
-  <main id="conteudo" class="container">
-    <section class="hero" aria-labelledby="t-hero">
-      <span class="pill">Conteúdo aberto • Sem logins</span>
-      <h1 id="t-hero">Responsabilidade Social, com profundidade e clareza</h1>
-      <p>Este é o hub: escolhe um tema para explorar definições, consequências, exemplos e ações práticas. Cada tema inclui o papel da sociedade, das empresas e do indivíduo, além de leituras e recursos.</p>
-    </section>
-
-    <section aria-labelledby="t-temas">
-      <h2 id="t-temas">Temas em destaque</h2>
-      <div class="grid cols-3">
-        <!-- Card: Idadismo -->
-        <a class="card" href="temas/idadismo/">
-          <div class="media"><img src="assets/temas/idadismo.jpg" alt="Fotografia representando gerações diferentes em diálogo"/></div>
-          <div class="body">
-            <h3>Idadismo</h3>
-            <div class="meta">Definição, consequências, exemplos e ações</div>
-          </div>
-        </a>
-        <!-- Card: Racismo -->
-        <a class="card" href="temas/racismo/">
-          <div class="media"><img src="assets/temas/racismo.jpg" alt="Mãos de tons de pele diferentes unidas"/></div>
-          <div class="body">
-            <h3>Racismo</h3>
-            <div class="meta">Estrutural, institucional e interpessoal</div>
-          </div>
-        </a>
-        <!-- Card: Sexismo -->
-        <a class="card" href="temas/sexismo/">
-          <div class="media"><img src="assets/temas/sexismo.jpg" alt="Sinal de igualdade de género"/></div>
-          <div class="body">
-            <h3>Sexismo</h3>
-            <div class="meta">Género, oportunidades e violência</div>
-          </div>
-        </a>
-        <!-- Card: Capacitismo -->
-        <a class="card" href="temas/capacitismo/">
-          <div class="media"><img src="assets/temas/capacitismo.jpg" alt="Pessoa com cadeira de rodas usando um laptop"/></div>
-          <div class="body">
-            <h3>Capacitismo</h3>
-            <div class="meta">Acessibilidade e inclusão</div>
-          </div>
-        </a>
-        <!-- Card: LGBTQ+fobia -->
-        <a class="card" href="temas/lgbtqfobia/">
-          <div class="media"><img src="assets/temas/lgbtq.jpg" alt="Bandeira arco-íris em espaço público"/></div>
-          <div class="body">
-            <h3>LGBTQ+fobia</h3>
-            <div class="meta">Direitos e segurança</div>
-          </div>
-        </a>
-        <!-- Card: Xenofobia -->
-        <a class="card" href="temas/xenofobia/">
-          <div class="media"><img src="assets/temas/xenofobia.jpg" alt="Mala e passaporte simbolizando migração"/></div>
-          <div class="body">
-            <h3>Xenofobia</h3>
-            <div class="meta">Migração e integração</div>
-          </div>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
+  <!-- Hero -->
+  <section class="hero">
     <div class="container">
-      <p>© <span id="y"></span> SML — Responsabilidade Social • <span class="meta">Atualiza os cartões de temas e adiciona mais fotos em /assets/temas/</span></p>
-    </div>
-  </footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
-</body>
-</html>
-
-
-<!-- =========================
-  /temas/idadismo/index.html  (Página de Tema — exemplo com conteúdo)
-========================= -->
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Idadismo | SML</title>
-  <meta name="description" content="Idadismo: definição, consequências, exemplos e ações práticas." />
-  <link rel="stylesheet" href="../../assets/style.css" />
-</head>
-<body>
-  <a class="skip" href="#conteudo">Saltar para o conteúdo</a>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="/"><div class="logo">SML</div><span>Responsabilidade Social</span></a>
-      <nav>
-        <a class="link" href="/temas/">Todos os temas</a>
-        <a class="link" href="/recursos.html">Recursos</a>
-        <a class="link" href="/contacto.html">Contacto</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="conteudo" class="container">
-    <section class="hero theme" aria-labelledby="t-hero">
-      <div>
-        <span class="pill">Tema</span>
-        <h1 id="t-hero">Idadismo</h1>
-        <p class="meta">Definição, Consequências, Exemplos, Pequenas atitudes, O que mudar, Empresas, Leituras, Artigos</p>
+      <div class="eyebrow">Consulta pública</div>
+      <h1>Site moderno em <span class="text-gradient">azul & lilás</span></h1>
+      <p class="lead">Espaço simples para expor um tema com clareza — apenas textos e fotografias, sem logins nem formulários complicados.</p>
+      <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap">
+        <a class="btn" href="#textos">Ler textos</a>
+        <a class="btn secondary" href="#galeria">Ver galeria</a>
       </div>
-      <div class="cover"><img src="../../assets/temas/idadismo.jpg" alt="Gerações diferentes em diálogo"/></div>
-    </section>
+    </div>
+  </section>
 
-    <div class="main">
-      <aside class="toc" aria-label="Navegação interna">
-        <h4>Nesta página</h4>
-        <a href="#definicao">Definição</a>
-        <a href="#consequencias">Consequências</a>
-        <a href="#exemplos">Exemplos</a>
-        <a href="#atitudes">Pequenas atitudes</a>
-        <a href="#sociedade">O que mudar na sociedade</a>
-        <a href="#empresas">O que as empresas podem fazer</a>
-        <a href="#leituras">Leituras</a>
-        <a href="#artigos">Artigos</a>
-      </aside>
-
-      <div>
-        <section id="definicao" class="section">
-          <h2>Definição</h2>
-          <p>O idadismo é o preconceito baseado na idade, que pode afetar tanto pessoas mais velhas quanto mais jovens. Manifesta‑se em contextos como trabalho, mídia e saúde, restringindo oportunidades e reforçando estereótipos.</p>
-        </section>
-
-        <section id="consequencias" class="section">
-          <h2>Consequências</h2>
-          <p>Impactos na saúde mental e física, no emprego e na participação social. Para pessoas mais velhas: barreiras no trabalho e acesso a serviços. Para pessoas jovens: invalidação de opiniões e entraves no início de carreira.</p>
-        </section>
-
-        <section id="exemplos" class="section">
-          <h2>Exemplos</h2>
-          <ul>
-            <li>Evitar contratar acima de certa idade por estereótipos de aprendizagem.</li>
-            <li>Jovens não levados a sério em espaços profissionais ou cívicos.</li>
-            <li>Mídia que trata o envelhecer como unicamente negativo.</li>
-          </ul>
-        </section>
-
-        <section id="atitudes" class="section">
-          <h2>Pequenas atitudes</h2>
-          <ul>
-            <li>Valorizar experiência de pessoas mais velhas e inovação de pessoas jovens.</li>
-            <li>Incentivar equipas com faixas etárias diversas.</li>
-            <li>Promover diálogo intergeracional.</li>
-          </ul>
-        </section>
-
-        <section id="sociedade" class="section">
-          <h2>O que mudar na sociedade</h2>
-          <p>Quebra de estereótipos etários via políticas públicas, práticas empresariais e consciencialização. Envelhecer como processo natural; juventude respeitada como agente de mudança.</p>
-        </section>
-
-        <section id="empresas" class="section">
-          <h2>O que as empresas podem fazer</h2>
-          <ul>
-            <li>Programas de diversidade etária no recrutamento.</li>
-            <li>Formações sobre preconceito geracional.</li>
-            <li>Aprendizagem contínua para todas as idades.</li>
-          </ul>
-        </section>
-
-        <section id="leituras" class="section">
-          <h2>Sugestões de leitura</h2>
-          <ul>
-            <li>“A Revolução da Longevidade” — Ken Dychtwald</li>
-            <li>“Ageism Unmasked” — Tracey Gendron</li>
-          </ul>
-        </section>
-
-        <section id="artigos" class="section">
-          <h2>Artigos</h2>
-          <ul>
-            <li>O impacto do idadismo no mercado de trabalho.</li>
-            <li>Como a mídia reforça estereótipos etários?</li>
-          </ul>
-        </section>
-
-        <div class="nav-nextprev">
-          <a href="../racismo/">← Racismo</a>
-          <a href="../sexismo/">Sexismo →</a>
+  <main id="conteudo">
+    <!-- Secção Tema / Sobre -->
+    <section id="tema" class="section">
+      <div class="container article" data-reveal>
+        <h2 class="section-title">Sobre o tema</h2>
+        <p>Este site apresenta um tema para consulta aberta. A informação é organizada por secções curtas e objetivas, com tipografia legível e uma paleta <em>azul & lilás</em> que dá destaque ao conteúdo.</p>
+        <p class="muted">Nota: Podes editar os textos abaixo conforme necessário. Mantém a estrutura para uma navegação clara.</p>
+        <div class="quote" style="margin-top:1rem" aria-label="Citação em destaque">
+          "Conhecimento acessível é conhecimento útil." — <strong>SLM Projects</strong>
         </div>
       </div>
-    </div>
-  </main>
-
-  <footer>
-    <div class="container"><p>© <span id="y"></span> SML — Responsabilidade Social</p></div>
-  </footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
-</body>
-</html>
-
-
-<!-- =========================
-  /temas/racismo/index.html  (Página de Tema — exemplo 2)
-========================= -->
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Racismo | SML</title>
-  <meta name="description" content="Racismo: estrutural, institucional e interpessoal; impactos e ações." />
-  <link rel="stylesheet" href="../../assets/style.css" />
-</head>
-<body>
-  <a class="skip" href="#conteudo">Saltar para o conteúdo</a>
-  <header>
-    <div class="container nav">
-      <a class="brand" href="/"><div class="logo">SML</div><span>Responsabilidade Social</span></a>
-      <nav>
-        <a class="link" href="/temas/">Todos os temas</a>
-        <a class="link" href="/recursos.html">Recursos</a>
-        <a class="link" href="/contacto.html">Contacto</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="conteudo" class="container">
-    <section class="hero theme" aria-labelledby="t-hero">
-      <div>
-        <span class="pill">Tema</span>
-        <h1 id="t-hero">Racismo</h1>
-        <p class="meta">Definição, Consequências, Exemplos, Pequenas atitudes, O que mudar, Empresas, Leituras, Artigos</p>
-      </div>
-      <div class="cover"><img src="../../assets/temas/racismo.jpg" alt="Mãos de tons de pele diferentes unidas"/></div>
     </section>
 
-    <div class="main">
-      <aside class="toc" aria-label="Navegação interna">
-        <h4>Nesta página</h4>
-        <a href="#definicao">Definição</a>
-        <a href="#consequencias">Consequências</a>
-        <a href="#exemplos">Exemplos</a>
-        <a href="#atitudes">Pequenas atitudes</a>
-        <a href="#sociedade">O que mudar na sociedade</a>
-        <a href="#empresas">O que as empresas podem fazer</a>
-        <a href="#leituras">Leituras</a>
-        <a href="#artigos">Artigos</a>
-      </aside>
+    <!-- Secção Textos (cards) -->
+    <section id="textos" class="section">
+      <div class="container">
+        <h2 class="section-title">Textos</h2>
+        <div class="cards" data-reveal>
+          <article class="card">
+            <div class="badge lilac">Introdução</div>
+            <h3 class="title">1) Contexto geral</h3>
+            <p class="subtitle">Uma visão rápida do tema: objetivos, âmbito e impacto.</p>
+            <p>Utiliza esta página para explicar o porquê do tema existir, qual a sua relevância e como a informação está organizada.</p>
+            <div style="margin-top:.75rem"><a class="btn ghost" href="#">Ler mais</a></div>
+          </article>
 
-      <div>
-        <section id="definicao" class="section">
-          <h2>Definição</h2>
-          <p>Discriminação baseada na cor da pele ou origem étnica. Pode ser explícita (insultos/violência) ou estrutural (barreiras sistémicas a oportunidades).</p>
-        </section>
+          <article class="card">
+            <div class="badge">Detalhe</div>
+            <h3 class="title">2) Desenvolvimento</h3>
+            <p class="subtitle">Secção para texto mais longo, dados e referências.</p>
+            <p>Divide o conteúdo com subtítulos (<code>&lt;h3&gt;</code>) e usa <span class="text-lilac">.article</span> quando precisares de mais profundidade e margens confortáveis.</p>
+            <div style="margin-top:.75rem"><a class="btn ghost" href="#">Ler mais</a></div>
+          </article>
 
-        <section id="consequencias" class="section">
-          <h2>Consequências</h2>
-          <p>Afecta emprego, educação, saúde e bem‑estar, perpetuando desigualdades sociais e económicas.</p>
-        </section>
-
-        <section id="exemplos" class="section">
-          <h2>Exemplos</h2>
-          <ul>
-            <li>Perfilamento racial em abordagens policiais.</li>
-            <li>Sub‑representação em cargos de liderança.</li>
-            <li>Estereótipos negativos na mídia e entretenimento.</li>
-          </ul>
-        </section>
-
-        <section id="atitudes" class="section">
-          <h2>Pequenas atitudes</h2>
-          <ul>
-            <li>Não tolerar piadas/comentários racistas.</li>
-            <li>Ampliar vozes de autores e criadores racializados.</li>
-            <li>Questionar desigualdades raciais em espaços de poder.</li>
-          </ul>
-        </section>
-
-        <section id="sociedade" class="section">
-          <h2>O que mudar na sociedade</h2>
-          <p>Educação, políticas públicas e ações afirmativas para garantir igualdade de acesso e reparar desigualdades históricas.</p>
-        </section>
-
-        <section id="empresas" class="section">
-          <h2>O que as empresas podem fazer</h2>
-          <ul>
-            <li>Programas de inclusão e equidade racial.</li>
-            <li>Formações sobre preconceito inconsciente.</li>
-            <li>Recrutamento e progressão com foco em diversidade.</li>
-          </ul>
-        </section>
-
-        <section id="leituras" class="section">
-          <h2>Leituras</h2>
-          <ul>
-            <li>“Pequeno Manual Antirracista” — Djamila Ribeiro</li>
-            <li>“Entre o Mundo e Eu” — Ta‑Nehisi Coates</li>
-          </ul>
-        </section>
-
-        <section id="artigos" class="section">
-          <h2>Artigos</h2>
-          <ul>
-            <li>O impacto do racismo estrutural na economia.</li>
-            <li>Como o racismo afeta a saúde mental?</li>
-          </ul>
-        </section>
-
-        <div class="nav-nextprev">
-          <a href="../idadismo/">← Idadismo</a>
-          <a href="../sexismo/">Sexismo →</a>
+          <article class="card">
+            <div class="badge lilac">Resumo</div>
+            <h3 class="title">3) Conclusões</h3>
+            <p class="subtitle">Síntese e próximos passos.</p>
+            <p>Termina com pontos-chave, recomendações e eventuais anexos ou ligações para documentos.</p>
+            <div style="margin-top:.75rem"><a class="btn ghost" href="#">Ler mais</a></div>
+          </article>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Secção Galeria -->
+    <section id="galeria" class="section">
+      <div class="container">
+        <h2 class="section-title">Galeria</h2>
+        <p class="lead">Imagens ilustrativas do tema (substitui pelos teus ficheiros quando quiseres).</p>
+        <div class="gallery-grid" style="margin-top:1rem" data-reveal>
+          <figure class="item"><img src="https://picsum.photos/seed/azul1/800/600" alt="Fotografia ilustrativa 1"></figure>
+          <figure class="item"><img src="https://picsum.photos/seed/lilas2/800/600" alt="Fotografia ilustrativa 2"></figure>
+          <figure class="item"><img src="https://picsum.photos/seed/tema3/800/600" alt="Fotografia ilustrativa 3"></figure>
+          <figure class="item"><img src="https://picsum.photos/seed/tema4/800/600" alt="Fotografia ilustrativa 4"></figure>
+          <figure class="item"><img src="https://picsum.photos/seed/tema5/800/600" alt="Fotografia ilustrativa 5"></figure>
+          <figure class="item"><img src="https://picsum.photos/seed/tema6/800/600" alt="Fotografia ilustrativa 6"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secção Documentos (opcional) -->
+    <section id="documentos" class="section">
+      <div class="container">
+        <h2 class="section-title">Documentos</h2>
+        <p class="lead">Liga aqui PDFs ou anexos relevantes ao tema.</p>
+        <table class="table" style="margin-top:1rem" data-reveal>
+          <thead>
+            <tr><th>Título</th><th>Tamanho</th><th>Ação</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Nota técnica (exemplo)</td>
+              <td>—</td>
+              <td><a class="btn ghost" href="#">Abrir</a></td>
+            </tr>
+            <tr>
+              <td>Relatório síntese (exemplo)</td>
+              <td>—</td>
+              <td><a class="btn ghost" href="#">Abrir</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Secção Contacto -->
+    <section id="contacto" class="section">
+      <div class="container">
+        <h2 class="section-title">Contacto</h2>
+        <p>Para sugestões sobre o conteúdo publicado:</p>
+        <p><a class="btn" href="mailto:info@exemplo.pt">info@exemplo.pt</a></p>
+        <p class="muted">Não é necessário criar conta ou iniciar sessão para consultar o site.</p>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <div class="container"><p>© <span id="y"></span> SML — Responsabilidade Social</p></div>
+  <footer class="footer">
+    <div class="container" style="display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap">
+      <small class="muted">© <span id="ano"></span> SLM Projects</small>
+      <a href="#" class="btn ghost">Voltar ao topo</a>
+    </div>
   </footer>
-  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+
+  <script>
+    // Atualiza ano no rodapé
+    document.getElementById('ano').textContent = new Date().getFullYear();
+
+    // Revela elementos ao entrar no viewport
+    const revealTargets = document.querySelectorAll('[data-reveal]');
+    const obs = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) { e.target.classList.add('reveal'); obs.unobserve(e.target); }
+    }, { threshold: 0.08 });
+    revealTargets.forEach((el) => obs.observe(el));
+  </script>
+  <noscript><div class="container" style="padding:1rem" role="status">JavaScript desativado: o conteúdo continua acessível.</div></noscript>
 </body>
 </html>
