@@ -1,69 +1,219 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portefólio SML</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SML | Responsabilidade Social</title>
+  <meta name="description" content="Site informativo sobre responsabilidade social: igualdade, inclusão, direitos e ações práticas. Por SML." />
+  <meta name="color-scheme" content="light dark" />
+  <meta property="og:title" content="SML | Responsabilidade Social" />
+  <meta property="og:description" content="Conteúdos claros e acessíveis sobre responsabilidade social e inclusão." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://slm-projects.github.io" />
+  <link rel="icon" href="/favicon.ico" />
   <style>
-    body {
-      font-family: "Segoe UI", Roboto, sans-serif;
-      margin: 0;
-      background: #f7f9fb;
-      color: #222;
-      text-align: center;
+    :root{
+      --bg: #ffffff; --fg:#111827; --muted:#6b7280; --brand:#0ea5e9; --brand-2:#22c55e;
+      --card:#f3f4f6; --border:#e5e7eb;
     }
-    header {
-      background: #004aad;
-      color: white;
-      padding: 1.5rem;
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0b1020; --fg:#e5e7eb; --muted:#9ca3af; --card:#0f1733; --border:#1f2a44; }
     }
-    h1 {
-      margin: 0;
-    }
-    main {
-      padding: 2rem;
-    }
-    section {
-      margin-bottom: 2rem;
-    }
-    a {
-      color: #004aad;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    footer {
-      background: #eee;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;background:var(--bg);color:var(--fg);}
+    .container{max-width:1100px;margin:auto;padding:0 1rem}
+    /* Header */
+    .skip{position:absolute;left:-9999px;top:auto}
+    .skip:focus{left:1rem;top:1rem;background:var(--brand);color:#fff;padding:.5rem .75rem;border-radius:.5rem;z-index:1000}
+    header{position:sticky;top:0;background:rgba(255,255,255,.75);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--border);z-index:50}
+    @media (prefers-color-scheme: dark){header{background:rgba(11,16,32,.65)}}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .brand{display:flex;gap:.6rem;align-items:center;font-weight:700}
+    .brand .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;color:#fff;font-weight:900}
+    .nav a{color:var(--fg);text-decoration:none;margin-left:1rem;font-weight:600}
+    .nav a:hover{color:var(--brand)}
+    /* Hero */
+    .hero{padding:4rem 0 3rem}
+    .hero h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.1;margin:.2rem 0 1rem}
+    .hero p{color:var(--muted);font-size:1.05rem;max-width:60ch}
+    .cta{display:flex;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap}
+    .btn{border:1px solid var(--border);background:var(--fg);color:var(--bg);padding:.7rem 1rem;border-radius:.8rem;font-weight:700;text-decoration:none}
+    .btn.alt{background:transparent;color:var(--fg)}
+    .btn:hover{opacity:.9}
+    .pill{display:inline-block;background:var(--card);border:1px solid var(--border);color:var(--muted);padding:.35rem .6rem;border-radius:999px;font-size:.85rem}
+    /* Sections */
+    section{padding:2.75rem 0;border-top:1px solid var(--border)}
+    h2{font-size:1.6rem;margin:0 0 1rem}
+    .grid{display:grid;gap:1rem}
+    @media(min-width:720px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}.grid.cols-2{grid-template-columns:repeat(2,1fr)}}
+    .card{background:var(--card);border:1px solid var(--border);padding:1rem;border-radius:1rem}
+    .card h3{margin:.4rem 0 .4rem;font-size:1.1rem}
+    .meta{color:var(--muted);font-size:.9rem}
+    .list{margin:.6rem 0 0;padding:0 0 0 1.1rem}
+    /* Footer */
+    footer{border-top:1px solid var(--border);padding:2rem 0;color:var(--muted)}
+    .small{font-size:.92rem;color:var(--muted)}
   </style>
 </head>
 <body>
+  <a class="skip" href="#conteudo">Saltar para o conteúdo</a>
   <header>
-    <h1>Portefólio SML</h1>
-    <p>Responsabilidade Social • Python • Power BI</p>
+    <div class="container nav" role="navigation" aria-label="Principal">
+      <div class="brand" aria-label="SML">
+        <div class="logo" aria-hidden="true">S</div>
+        <span>SML · Responsabilidade Social</span>
+      </div>
+      <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#temas">Temas</a>
+        <a href="#acoes">Ações</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section>
-      <h2>Responsabilidade Social</h2>
-      <p>Projeto dedicado a promover igualdade, inclusão e responsabilidade cívica.</p>
+  <main id="conteudo" class="container">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="t-hero">
+      <span class="pill">Conteúdo aberto • Sem logins</span>
+      <h1 id="t-hero">Responsabilidade Social, de forma clara e prática</h1>
+      <p>Este site reúne conhecimento acessível sobre igualdade, inclusão e direitos, com exemplos e ferramentas para ação individual e coletiva. Um projeto de SML.</p>
+      <div class="cta">
+        <a class="btn" href="#acoes">Ver ações práticas</a>
+        <a class="btn alt" href="#temas" aria-label="Ir para a secção de temas">Explorar temas</a>
+      </div>
     </section>
 
-    <section>
-      <h2>Python</h2>
-      <p>Exemplo de análise e automação em Python.</p>
+    <!-- Sobre -->
+    <section id="sobre" aria-labelledby="t-sobre">
+      <h2 id="t-sobre">Sobre o projeto</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Missão</h3>
+          <p>Promover uma cultura de respeito, justiça e inclusão. Organizamos o conteúdo por temas, explicamos conceitos e apontamos caminhos para agir com responsabilidade social.</p>
+        </div>
+        <div class="card">
+          <h3>Princípios</h3>
+          <ul class="list">
+            <li>Linguagem clara e inclusiva.</li>
+            <li>Acessibilidade: contraste, navegação por teclado e alternativas de texto.</li>
+            <li>Transparência de fontes e limites do conteúdo.</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>Power BI</h2>
-      <p>Dashboard interativo para visualização de indicadores sociais.</p>
+    <!-- Temas -->
+    <section id="temas" aria-labelledby="t-temas">
+      <h2 id="t-temas">Temas centrais</h2>
+      <div class="grid cols-3">
+        <article class="card">
+          <h3>Problemas & Discriminação</h3>
+          <p class="meta">Ex.: racismo, sexismo, idadismo, capacitismo.</p>
+          <p>Definições, contextos e impactos. Como identificar vieses e microagressões no dia a dia.</p>
+        </article>
+        <article class="card">
+          <h3>Direitos & Igualdade</h3>
+          <p class="meta">Quadros legais e boas práticas.</p>
+          <p>Linhas gerais de direitos humanos e igualdade de oportunidades, com foco em Portugal.</p>
+        </article>
+        <article class="card">
+          <h3>Impactos Sociais</h3>
+          <p class="meta">Consequências e custos da exclusão.</p>
+          <p>Efeitos na saúde, educação, emprego e coesão social; por que agir é urgente.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Ações Práticas -->
+    <section id="acoes" aria-labelledby="t-acoes">
+      <h2 id="t-acoes">Ações práticas</h2>
+      <div class="grid cols-3">
+        <div class="card">
+          <h3>No dia a dia</h3>
+          <ul class="list">
+            <li>Usar linguagem respeitosa.</li>
+            <li>Intervir como testemunha segura.</li>
+            <li>Ouvir e amplificar vozes diversas.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Na comunidade</h3>
+          <ul class="list">
+            <li>Participar em iniciativas locais.</li>
+            <li>Promover espaços acessíveis e acolhedores.</li>
+            <li>Partilhar recursos e oportunidades.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>No trabalho/estudo</h3>
+          <ul class="list">
+            <li>Políticas de inclusão e feedback seguro.</li>
+            <li>Formações e sensibilização contínua.</li>
+            <li>Métricas e avaliação de impacto.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recursos -->
+    <section id="recursos" aria-labelledby="t-recursos">
+      <h2 id="t-recursos">Recursos</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Guias & Leituras</h3>
+          <ul class="list">
+            <li><a href="#" rel="noopener">Guia rápido de linguagem inclusiva (PDF)</a></li>
+            <li><a href="#" rel="noopener">Checklist de acessibilidade para eventos</a></li>
+            <li><a href="#" rel="noopener">Como reportar discriminação — contactos úteis</a></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Modelos & Ferramentas</h3>
+          <ul class="list">
+            <li><a href="#" rel="noopener">Modelo de política anti‑assédio</a></li>
+            <li><a href="#" rel="noopener">Poster: Seja uma testemunha ativa</a></li>
+            <li><a href="#" rel="noopener">Lista de verificação para reuniões inclusivas</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="small">Sugere recursos: <a href="#contacto">contacta-me</a>.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" aria-labelledby="t-faq">
+      <h2 id="t-faq">Perguntas frequentes</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Este site tem logins ou comentários?</h3>
+          <p>Não. O objetivo é consulta aberta e simples. Os conteúdos são curados e atualizados periodicamente.</p>
+        </div>
+        <div class="card">
+          <h3>Posso reutilizar o conteúdo?</h3>
+          <p>Salvo indicação em contrário, o conteúdo textual pode ser partilhado com atribuição a SML. Para imagens, verifica a legenda/fonte.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" aria-labelledby="t-contacto">
+      <h2 id="t-contacto">Contacto</h2>
+      <div class="card">
+        <p>Para sugestões de recursos, correções ou colaboração, envia email para <a href="mailto:seu.email@exemplo.pt">seu.email@exemplo.pt</a>.</p>
+        <p class="small">Outros projetos técnicos (Python / Power BI) vivem em repositórios independentes deste site.</p>
+      </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 SML — Todos os direitos reservados.</p>
+    <div class="container">
+      <p>© <span id="y"></span> SML — Responsabilidade Social. Conteúdo aberto e acessível.</p>
+    </div>
   </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
