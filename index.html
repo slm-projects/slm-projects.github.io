@@ -4,56 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SML | Responsabilidade Social</title>
-  <meta name="description" content="Site informativo sobre responsabilidade social: igualdade, inclusão, direitos e ações práticas. Por SML." />
+  <meta name="description" content="Conteúdos claros e acessíveis sobre responsabilidade social: problemas sociais, direitos, impactos e ações práticas. Por SML." />
   <meta name="color-scheme" content="light dark" />
-  <meta property="og:title" content="SML | Responsabilidade Social" />
-  <meta property="og:description" content="Conteúdos claros e acessíveis sobre responsabilidade social e inclusão." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://slm-projects.github.io" />
   <link rel="icon" href="/favicon.ico" />
   <style>
-    :root{
-      --bg: #ffffff; --fg:#111827; --muted:#6b7280; --brand:#0ea5e9; --brand-2:#22c55e;
-      --card:#f3f4f6; --border:#e5e7eb;
-    }
-    @media (prefers-color-scheme: dark){
-      :root{ --bg:#0b1020; --fg:#e5e7eb; --muted:#9ca3af; --card:#0f1733; --border:#1f2a44; }
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;background:var(--bg);color:var(--fg);}
-    .container{max-width:1100px;margin:auto;padding:0 1rem}
+    :root{ --bg:#ffffff; --fg:#111827; --muted:#6b7280; --brand:#0ea5e9; --brand2:#22c55e; --card:#f3f4f6; --border:#e5e7eb }
+    @media (prefers-color-scheme: dark){ :root{ --bg:#0b1020; --fg:#e5e7eb; --muted:#9ca3af; --card:#0f1733; --border:#1f2a44 } }
+    *{ box-sizing:border-box }
+    html{ scroll-behavior:smooth }
+    body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif; background:var(--bg); color:var(--fg) }
+    .container{ max-width:1100px; margin:auto; padding:0 1rem }
     /* Header */
-    .skip{position:absolute;left:-9999px;top:auto}
-    .skip:focus{left:1rem;top:1rem;background:var(--brand);color:#fff;padding:.5rem .75rem;border-radius:.5rem;z-index:1000}
-    header{position:sticky;top:0;background:rgba(255,255,255,.75);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--border);z-index:50}
-    @media (prefers-color-scheme: dark){header{background:rgba(11,16,32,.65)}}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
-    .brand{display:flex;gap:.6rem;align-items:center;font-weight:700}
-    .brand .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;color:#fff;font-weight:900}
-    .nav a{color:var(--fg);text-decoration:none;margin-left:1rem;font-weight:600}
-    .nav a:hover{color:var(--brand)}
+    .skip{ position:absolute; left:-9999px }
+    .skip:focus{ left:1rem; top:1rem; background:var(--brand); color:#fff; padding:.5rem .75rem; border-radius:.5rem; z-index:1000 }
+    header{ position:sticky; top:0; background:rgba(255,255,255,.75); backdrop-filter:saturate(180%) blur(10px); border-bottom:1px solid var(--border); z-index:50 }
+    @media (prefers-color-scheme: dark){ header{ background:rgba(11,16,32,.65) } }
+    .nav{ display:flex; align-items:center; justify-content:space-between; padding:.9rem 0 }
+    .brand{ display:flex; gap:.6rem; align-items:center; font-weight:700 }
+    .brand .logo{ width:36px; height:36px; border-radius:10px; background:linear-gradient(135deg,var(--brand),var(--brand2)); display:grid; place-items:center; color:#fff }
+    .nav a{ color:var(--fg); text-decoration:none; margin-left:1rem; font-weight:600 }
+    .nav a:hover{ color:var(--brand) }
     /* Hero */
-    .hero{padding:4rem 0 3rem}
-    .hero h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.1;margin:.2rem 0 1rem}
-    .hero p{color:var(--muted);font-size:1.05rem;max-width:60ch}
-    .cta{display:flex;gap:.75rem;margin-top:1.25rem;flex-wrap:wrap}
-    .btn{border:1px solid var(--border);background:var(--fg);color:var(--bg);padding:.7rem 1rem;border-radius:.8rem;font-weight:700;text-decoration:none}
-    .btn.alt{background:transparent;color:var(--fg)}
-    .btn:hover{opacity:.9}
-    .pill{display:inline-block;background:var(--card);border:1px solid var(--border);color:var(--muted);padding:.35rem .6rem;border-radius:999px;font-size:.85rem}
+    .hero{ padding:4rem 0 2.5rem }
+    .hero h1{ font-size:clamp(1.8rem,4vw,3rem); line-height:1.1; margin:.2rem 0 1rem }
+    .hero p{ color:var(--muted); font-size:1.05rem; max-width:65ch }
+    .pill{ display:inline-block; background:var(--card); border:1px solid var(--border); color:var(--muted); padding:.35rem .6rem; border-radius:999px; font-size:.85rem }
+    .cta{ display:flex; gap:.75rem; margin-top:1.25rem; flex-wrap:wrap }
+    .btn{ border:1px solid var(--border); background:var(--fg); color:var(--bg); padding:.7rem 1rem; border-radius:.8rem; font-weight:700; text-decoration:none }
+    .btn.alt{ background:transparent; color:var(--fg) }
+    .btn:hover{ opacity:.92 }
     /* Sections */
-    section{padding:2.75rem 0;border-top:1px solid var(--border)}
-    h2{font-size:1.6rem;margin:0 0 1rem}
-    .grid{display:grid;gap:1rem}
-    @media(min-width:720px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}.grid.cols-2{grid-template-columns:repeat(2,1fr)}}
-    .card{background:var(--card);border:1px solid var(--border);padding:1rem;border-radius:1rem}
-    .card h3{margin:.4rem 0 .4rem;font-size:1.1rem}
-    .meta{color:var(--muted);font-size:.9rem}
-    .list{margin:.6rem 0 0;padding:0 0 0 1.1rem}
-    /* Footer */
-    footer{border-top:1px solid var(--border);padding:2rem 0;color:var(--muted)}
-    .small{font-size:.92rem;color:var(--muted)}
+    section{ padding:2.5rem 0; border-top:1px solid var(--border) }
+    h2{ font-size:1.6rem; margin:0 0 1rem }
+    .grid{ display:grid; gap:1rem }
+    @media(min-width:780px){ .grid.cols-3{ grid-template-columns:repeat(3,1fr) } .grid.cols-2{ grid-template-columns:repeat(2,1fr) } }
+    .card{ background:var(--card); border:1px solid var(--border); padding:1rem; border-radius:1rem }
+    .card h3{ margin:.3rem 0 .5rem; font-size:1.1rem }
+    .meta{ color:var(--muted); font-size:.92rem }
+    .list{ margin:.5rem 0 0; padding:0 0 0 1.1rem }
+    details{ background:var(--card); border:1px solid var(--border); border-radius:1rem; padding:1rem; }
+    details+details{ margin-top:.75rem }
+    details summary{ cursor:pointer; font-weight:700 }
+    .small{ font-size:.9rem; color:var(--muted) }
+    footer{ border-top:1px solid var(--border); padding:2rem 0; color:var(--muted) }
   </style>
 </head>
 <body>
@@ -65,137 +58,278 @@
         <span>SML · Responsabilidade Social</span>
       </div>
       <nav>
-        <a href="#sobre">Sobre</a>
-        <a href="#temas">Temas</a>
-        <a href="#acoes">Ações</a>
-        <a href="#recursos">Recursos</a>
-        <a href="#faq">FAQ</a>
+        <a href="#intro">Introdução</a>
+        <a href="#problemas">Problemas</a>
+        <a href="#direitos">Direitos</a>
+        <a href="#impactos">Impactos</a>
+        <a href="#sociedade">Sociedade & Empresas</a>
+        <a href="#individual">Papel Individual</a>
+        <a href="#transparencia">Transparência</a>
+        <a href="#envolva">Envolva-se</a>
+        <a href="#blog">Blog</a>
         <a href="#contacto">Contacto</a>
       </nav>
     </div>
   </header>
 
   <main id="conteudo" class="container">
-    <!-- Hero -->
+    <!-- HERO -->
     <section class="hero" aria-labelledby="t-hero">
       <span class="pill">Conteúdo aberto • Sem logins</span>
-      <h1 id="t-hero">Responsabilidade Social, de forma clara e prática</h1>
-      <p>Este site reúne conhecimento acessível sobre igualdade, inclusão e direitos, com exemplos e ferramentas para ação individual e coletiva. Um projeto de SML.</p>
-      <div class="cta">
-        <a class="btn" href="#acoes">Ver ações práticas</a>
-        <a class="btn alt" href="#temas" aria-label="Ir para a secção de temas">Explorar temas</a>
-      </div>
+      <h1 id="t-hero">Responsabilidade Social — estrutura e conteúdos</h1>
+      <p>Site de consulta com navegação por temas: problemas sociais, direitos e igualdade, impactos, papéis da sociedade e do indivíduo, transparência e formas de participação.</p>
     </section>
 
-    <!-- Sobre -->
-    <section id="sobre" aria-labelledby="t-sobre">
-      <h2 id="t-sobre">Sobre o projeto</h2>
-      <div class="grid cols-2">
-        <div class="card">
-          <h3>Missão</h3>
-          <p>Promover uma cultura de respeito, justiça e inclusão. Organizamos o conteúdo por temas, explicamos conceitos e apontamos caminhos para agir com responsabilidade social.</p>
-        </div>
-        <div class="card">
-          <h3>Princípios</h3>
-          <ul class="list">
-            <li>Linguagem clara e inclusiva.</li>
-            <li>Acessibilidade: contraste, navegação por teclado e alternativas de texto.</li>
-            <li>Transparência de fontes e limites do conteúdo.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Temas -->
-    <section id="temas" aria-labelledby="t-temas">
-      <h2 id="t-temas">Temas centrais</h2>
-      <div class="grid cols-3">
-        <article class="card">
-          <h3>Problemas & Discriminação</h3>
-          <p class="meta">Ex.: racismo, sexismo, idadismo, capacitismo.</p>
-          <p>Definições, contextos e impactos. Como identificar vieses e microagressões no dia a dia.</p>
-        </article>
-        <article class="card">
-          <h3>Direitos & Igualdade</h3>
-          <p class="meta">Quadros legais e boas práticas.</p>
-          <p>Linhas gerais de direitos humanos e igualdade de oportunidades, com foco em Portugal.</p>
-        </article>
-        <article class="card">
-          <h3>Impactos Sociais</h3>
-          <p class="meta">Consequências e custos da exclusão.</p>
-          <p>Efeitos na saúde, educação, emprego e coesão social; por que agir é urgente.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- Ações Práticas -->
-    <section id="acoes" aria-labelledby="t-acoes">
-      <h2 id="t-acoes">Ações práticas</h2>
+    <!-- 1. Introdução ao Projeto -->
+    <section id="intro" aria-labelledby="t-intro">
+      <h2 id="t-intro">1. Introdução ao Projeto</h2>
       <div class="grid cols-3">
         <div class="card">
-          <h3>No dia a dia</h3>
-          <ul class="list">
-            <li>Usar linguagem respeitosa.</li>
-            <li>Intervir como testemunha segura.</li>
-            <li>Ouvir e amplificar vozes diversas.</li>
-          </ul>
+          <h3>Propósito</h3>
+          <p>Reunir informação clara e acessível para compreender e agir perante discriminações e desigualdades, promovendo inclusão e respeito.</p>
         </div>
         <div class="card">
-          <h3>Na comunidade</h3>
-          <ul class="list">
-            <li>Participar em iniciativas locais.</li>
-            <li>Promover espaços acessíveis e acolhedores.</li>
-            <li>Partilhar recursos e oportunidades.</li>
-          </ul>
+          <h3>Quem somos</h3>
+          <p>Projeto independente de SML. Curadoria de conteúdos, linguagem inclusiva e foco em ações práticas.</p>
         </div>
         <div class="card">
-          <h3>No trabalho/estudo</h3>
+          <h3>Contacto</h3>
+          <p>Escreve para <a href="mailto:seu.email@exemplo.pt">seu.email@exemplo.pt</a> para sugestões de recursos e correções.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Problemas Sociais e Discriminação -->
+    <section id="problemas" aria-labelledby="t-problemas">
+      <h2 id="t-problemas">2. Problemas Sociais e Discriminação</h2>
+
+      <!-- Idadismo -->
+      <details open>
+        <summary>Idadismo</summary>
+        <div class="meta">Definição, consequências, exemplos e ações</div>
+        <div class="grid cols-2" style="margin-top: .75rem">
+          <div class="card">
+            <h3>Definição</h3>
+            <p>O idadismo é o preconceito baseado na idade, que pode afetar tanto pessoas mais velhas quanto mais jovens. Manifesta‑se em contextos como trabalho, mídia e saúde, restringindo oportunidades e reforçando estereótipos.</p>
+            <h3>Consequências</h3>
+            <p>Pode gerar isolamento social, dificuldades financeiras e impacto na autoestima. Para pessoas mais velhas: barreiras no emprego, saúde e participação social. Para pessoas jovens: invalidação de opiniões e entraves no início de carreira.</p>
+            <h3>Exemplos</h3>
+            <ul class="list">
+              <li>Empresas evitam contratar acima de certa idade, alegando menor aprendizagem.</li>
+              <li>Jovens não levados a sério em espaços profissionais/políticos.</li>
+              <li>Mídia reforça a ideia de que envelhecer é negativo.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Pequenas atitudes</h3>
+            <ul class="list">
+              <li>Valorizar experiência de pessoas mais velhas e inovação de pessoas jovens.</li>
+              <li>Incentivar equipas com faixas etárias diversas.</li>
+              <li>Promover diálogo intergeracional.</li>
+            </ul>
+            <h3>O que mudar na sociedade</h3>
+            <p>Quebra de estereótipos etários via políticas públicas, práticas empresariais e consciencialização. Envelhecer como processo natural; juventude respeitada como agente de mudança.</p>
+            <h3>O que as empresas podem fazer</h3>
+            <ul class="list">
+              <li>Programas de diversidade etária no recrutamento.</li>
+              <li>Treinos sobre preconceito geracional.</li>
+              <li>Políticas de aprendizagem contínua para todas as idades.</li>
+            </ul>
+            <h3>Sugestões de leitura</h3>
+            <ul class="list">
+              <li>“A Revolução da Longevidade” — Ken Dychtwald</li>
+              <li>“Ageism Unmasked” — Tracey Gendron</li>
+            </ul>
+            <h3>Artigos</h3>
+            <ul class="list">
+              <li>O impacto do idadismo no mercado de trabalho.</li>
+              <li>Como a mídia reforça estereótipos etários?</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <!-- Racismo -->
+      <details>
+        <summary>Racismo</summary>
+        <div class="grid cols-2" style="margin-top: .75rem">
+          <div class="card">
+            <h3>Definição</h3>
+            <p>Discriminação baseada na cor da pele ou origem étnica. Pode ser explícita (insultos/violência) ou estrutural (barreiras sistémicas a oportunidades).</p>
+            <h3>Consequências</h3>
+            <p>Afeta emprego, educação, saúde e bem‑estar. Perpetua desigualdades económicas e sociais, travando mobilidade e reconhecimento cultural.</p>
+            <h3>Exemplos</h3>
+            <ul class="list">
+              <li>Perfilamento racial em abordagens policiais.</li>
+              <li>Sub‑representação em cargos de liderança.</li>
+              <li>Estereótipos negativos na mídia.</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Pequenas atitudes</h3>
+            <ul class="list">
+              <li>Não tolerar piadas/comentários racistas.</li>
+              <li>Consumir e promover conteúdos de autores negros e indígenas.</li>
+              <li>Questionar desigualdades raciais em espaços de poder.</li>
+            </ul>
+            <h3>O que mudar na sociedade</h3>
+            <p>Educação, políticas públicas e ações afirmativas para garantir igualdade de acesso a oportunidades, com reconhecimento de desigualdades históricas.</p>
+            <h3>O que as empresas podem fazer</h3>
+            <ul class="list">
+              <li>Programas de inclusão e equidade racial.</li>
+              <li>Formações sobre preconceito inconsciente.</li>
+              <li>Contratar e promover profissionais sub‑representados.</li>
+            </ul>
+            <h3>Sugestões de leitura</h3>
+            <ul class="list">
+              <li>“Pequeno Manual Antirracista” — Djamila Ribeiro</li>
+              <li>“Entre o Mundo e Eu” — Ta‑Nehisi Coates</li>
+            </ul>
+            <h3>Artigos</h3>
+            <ul class="list">
+              <li>O impacto do racismo estrutural na economia.</li>
+              <li>Como o racismo afeta a saúde mental?</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+
+      <!-- Demais temas com estrutura padrão (placeholders prontos para completar) -->
+      <details><summary>Sexismo</summary><p class="small">Completar: definição, consequências, exemplos, atitudes, mudanças, ações empresariais, leituras e artigos.</p></details>
+      <details><summary>LGBTQ+fobia</summary><p class="small">Completar com a mesma estrutura.</p></details>
+      <details><summary>Discriminação contra pessoas com deficiência</summary><p class="small">Completar com a mesma estrutura.</p></details>
+      <details><summary>Xenofobia e discriminação contra imigrantes</summary><p class="small">Completar com a mesma estrutura.</p></details>
+      <details><summary>Gordofobia e preconceito contra corpos não normativos</summary><p class="small">Completar com a mesma estrutura.</p></details>
+      <details><summary>Classismo e desigualdade socioeconômica</summary><p class="small">Completar com a mesma estrutura.</p></details>
+      <details><summary>Discriminação religiosa e intolerância</summary><p class="small">Completar com a mesma estrutura.</p></details>
+      <details><summary>Preconceito contra populações indígenas e minorias étnicas</summary><p class="small">Completar com a mesma estrutura.</p></details>
+      <details><summary>Preconceito contra pessoas neurodivergentes</summary><p class="small">Completar com a mesma estrutura.</p></details>
+      <details><summary>Discriminação contra pessoas em situação de rua</summary><p class="small">Completar com a mesma estrutura.</p></details>
+      <details><summary>Preconceito contra profissionais de determinadas áreas</summary><p class="small">Completar com a mesma estrutura.</p></details>
+    </section>
+
+    <!-- 3. Direitos e Igualdade -->
+    <section id="direitos" aria-labelledby="t-direitos">
+      <h2 id="t-direitos">3. Direitos e Igualdade</h2>
+      <div class="grid cols-3">
+        <ul class="card list">
+          <li>Igualdade de oportunidades</li>
+          <li>Inclusão no trabalho</li>
+          <li>Participação política</li>
+          <li>Acessibilidade digital e arquitetónica</li>
+        </ul>
+        <ul class="card list">
+          <li>Direito à educação de qualidade</li>
+          <li>Direito à saúde e a serviços básicos</li>
+          <li>Representação na mídia e cultura</li>
+        </ul>
+        <ul class="card list">
+          <li>Direito à moradia digna</li>
+          <li>Liberdade de expressão sem repressão</li>
+          <li>Proteção contra a violência e assédio</li>
+          <li>Justiça para grupos historicamente marginalizados</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. Impactos Sociais e Consequências -->
+    <section id="impactos" aria-labelledby="t-impactos">
+      <h2 id="t-impactos">4. Impactos Sociais e Consequências</h2>
+      <div class="grid cols-3">
+        <div class="card"><h3>Saúde mental</h3><p>Relação entre exclusão/discriminação e ansiedade, depressão e stress crónico.</p></div>
+        <div class="card"><h3>Economia</h3><p>Custos e perdas de produtividade e rendimento decorrentes da exclusão.</p></div>
+        <div class="card"><h3>Educação</h3><p>Barreiras no acesso, permanência e qualidade do ensino para grupos afetados.</p></div>
+      </div>
+    </section>
+
+    <!-- 5. O Papel da Sociedade e das Empresas -->
+    <section id="sociedade" aria-labelledby="t-sociedade">
+      <h2 id="t-sociedade">5. O Papel da Sociedade e das Empresas</h2>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Mudanças estruturais necessárias</h3>
+          <p>Reformas legais, políticas públicas baseadas em evidência e serviços inclusivos.</p>
+          <h3>Políticas públicas</h3>
+          <p>Programas de equidade, combate ao preconceito e proteção social.</p>
+        </div>
+        <div class="card">
+          <h3>O papel das organizações</h3>
           <ul class="list">
-            <li>Políticas de inclusão e feedback seguro.</li>
-            <li>Formações e sensibilização contínua.</li>
-            <li>Métricas e avaliação de impacto.</li>
+            <li>Governança e processos de diversidade, equidade e inclusão (DEI).</li>
+            <li>Formação contínua e canais seguros de escuta.</li>
+            <li>Parcerias com comunidades e ONGs.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- Recursos -->
-    <section id="recursos" aria-labelledby="t-recursos">
-      <h2 id="t-recursos">Recursos</h2>
+    <!-- 6. O Papel Individual -->
+    <section id="individual" aria-labelledby="t-individual">
+      <h2 id="t-individual">6. O Papel Individual</h2>
       <div class="grid cols-2">
         <div class="card">
-          <h3>Guias & Leituras</h3>
+          <h3>Conscientização e educação</h3>
           <ul class="list">
-            <li><a href="#" rel="noopener">Guia rápido de linguagem inclusiva (PDF)</a></li>
-            <li><a href="#" rel="noopener">Checklist de acessibilidade para eventos</a></li>
-            <li><a href="#" rel="noopener">Como reportar discriminação — contactos úteis</a></li>
+            <li>Autoeducação sobre preconceitos e vieses inconscientes.</li>
+            <li>Identificar microagressões e linguagem excludente.</li>
+            <li>Sugestões de livros e conteúdos (ver Recursos).</li>
+          </ul>
+          <h3>Atitudes no dia a dia</h3>
+          <ul class="list">
+            <li>Pequenas ações que fazem diferença.</li>
+            <li>Como apoiar pessoas discriminadas.</li>
+            <li>Como corrigir e lidar com falas preconceituosas.</li>
           </ul>
         </div>
         <div class="card">
-          <h3>Modelos & Ferramentas</h3>
+          <h3>Influência na comunidade</h3>
           <ul class="list">
-            <li><a href="#" rel="noopener">Modelo de política anti‑assédio</a></li>
-            <li><a href="#" rel="noopener">Poster: Seja uma testemunha ativa</a></li>
-            <li><a href="#" rel="noopener">Lista de verificação para reuniões inclusivas</a></li>
+            <li>Conversas abertas e diálogos construtivos.</li>
+            <li>Engajamento em debates e eventos.</li>
+            <li>Incentivar diversidade e inclusão em espaços sociais.</li>
+          </ul>
+          <h3>Apoio a causas</h3>
+          <ul class="list">
+            <li>Voluntariado e ativismo social.</li>
+            <li>Apoiar negócios e projetos inclusivos.</li>
+            <li>Usar redes sociais para amplificar vozes marginalizadas.</li>
           </ul>
         </div>
       </div>
-      <p class="small">Sugere recursos: <a href="#contacto">contacta-me</a>.</p>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" aria-labelledby="t-faq">
-      <h2 id="t-faq">Perguntas frequentes</h2>
+    <!-- 7. Transparência e Relatórios -->
+    <section id="transparencia" aria-labelledby="t-transp">
+      <h2 id="t-transp">7. Transparência e Relatórios</h2>
       <div class="grid cols-2">
         <div class="card">
-          <h3>Este site tem logins ou comentários?</h3>
-          <p>Não. O objetivo é consulta aberta e simples. Os conteúdos são curados e atualizados periodicamente.</p>
+          <h3>GRI e métricas de impacto</h3>
+          <p>Estruturas de reporte e indicadores para medir diversidade, inclusão e impacto social.</p>
         </div>
         <div class="card">
-          <h3>Posso reutilizar o conteúdo?</h3>
-          <p>Salvo indicação em contrário, o conteúdo textual pode ser partilhado com atribuição a SML. Para imagens, verifica a legenda/fonte.</p>
+          <h3>Relatórios e benchmarks</h3>
+          <ul class="list">
+            <li>Relatórios de sustentabilidade.</li>
+            <li>Benchmarks de diversidade.</li>
+          </ul>
         </div>
       </div>
+    </section>
+
+    <!-- 8. Envolva-se -->
+    <section id="envolva" aria-labelledby="t-envolva">
+      <h2 id="t-envolva">8. Envolva-se</h2>
+      <div class="grid cols-3">
+        <div class="card"><h3>Eventos e campanhas</h3><p>Agenda de iniciativas e datas relevantes.</p></div>
+        <div class="card"><h3>Voluntariado e ONGs</h3><p>Organizações para colaborar e apoiar.</p></div>
+        <div class="card"><h3>Comunidade e fóruns</h3><p>Espaços de diálogo e aprendizagem mútua.</p></div>
+      </div>
+    </section>
+
+    <!-- 9. Blog e Mídia -->
+    <section id="blog" aria-labelledby="t-blog">
+      <h2 id="t-blog">9. Blog e Mídia</h2>
+      <p class="small">Este site é estático. Podemos listar notícias relevantes, entrevistas com especialistas e casos de sucesso como links organizados por data.</p>
     </section>
 
     <!-- Contacto -->
@@ -203,7 +337,6 @@
       <h2 id="t-contacto">Contacto</h2>
       <div class="card">
         <p>Para sugestões de recursos, correções ou colaboração, envia email para <a href="mailto:seu.email@exemplo.pt">seu.email@exemplo.pt</a>.</p>
-        <p class="small">Outros projetos técnicos (Python / Power BI) vivem em repositórios independentes deste site.</p>
       </div>
     </section>
   </main>
@@ -213,7 +346,6 @@
       <p>© <span id="y"></span> SML — Responsabilidade Social. Conteúdo aberto e acessível.</p>
     </div>
   </footer>
-
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
 </html>
