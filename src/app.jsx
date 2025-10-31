@@ -741,28 +741,18 @@ const HomePage = () => {
 // Roteamento
 // =====================
 
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// …
+
 export default function App() {
   return (
-    <BrowserRouter basename={import.meta.env.BASE_URL}>
+    <BrowserRouter> {/* sem basename no user site */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path=":areaSlug/:slug" element={<TemaPage />} />
-        {/* Rotas de conveniência para acessar a área diretamente (grid completa) */}
-        {AREAS.map((a) => (
-          <Route
-            key={a.slug}
-            path={`/${a.slug}`}
-            element={
-              <>
-                <Header />
-                <AreaBlock area={a} />
-                <Footer />
-              </>
-            }
-          />
-        ))}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {/* …as restantes rotas que já tens… */}
       </Routes>
     </BrowserRouter>
   );
 }
+
