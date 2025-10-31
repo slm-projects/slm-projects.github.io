@@ -1,214 +1,95 @@
-/*
-  Stylesheet base — Tema Azul & Lilás
-  Perfil: moderno, limpo, focado em leitura de textos e exibição de fotos.
-  Como usar:
-    - Adicione <link rel="stylesheet" href="styles-azul-lilas.css"> ao <head>.
-    - Aplique classes utilitárias: .container, .section, .card, .btn, .gallery-grid, etc.
-*/
-
-/* ------------------------------
-   1) Reset & fundamentos
--------------------------------- */
-*, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-html, body { height: 100%; }
-body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; line-height: 1.6; color: var(--fg); background: var(--bg); }
-img, video { max-width: 100%; height: auto; display: block; }
-:root {
-  /* Cores de marca */
-  --brand-blue-700: #1D4ED8; /* azul principal */
-  --brand-blue-600: #2563EB;
-  --brand-blue-500: #3B82F6;
-  --brand-lilac-600: #7C3AED; /* lilás/roxo forte */
-  --brand-lilac-500: #8B5CF6;
-  --brand-lilac-400: #A78BFA; /* lilás médio */
-  --brand-lilac-300: #C4B5FD; /* lilás claro */
-
-  /* Neutros */
-  --bg: #FFFFFF; /* fundo base */
-  --bg-soft: #F8FAFF; /* leve azulado */
-  --fg: #0F172A; /* quase preto azulado */
-  --muted: #475569; /* cinza-azulado p/ textos secundários */
-  --border: #E5E7EB;
-
-  /* Realces e feedback */
-  --focus: var(--brand-lilac-500);
-  --success: #16A34A;
-  --warning: #F59E0B;
-  --danger: #DC2626;
-
-  /* Espaçamento, raio, sombras */
-  --space-1: .25rem;  /* 4px */
-  --space-2: .5rem;   /* 8px */
-  --space-3: .75rem;  /* 12px */
-  --space-4: 1rem;    /* 16px */
-  --space-6: 1.5rem;  /* 24px */
-  --space-8: 2rem;    /* 32px */
-  --space-12: 3rem;   /* 48px */
-  --radius: 1rem;     /* 16px */
-  --radius-xl: 1.5rem;/* 24px */
-  --shadow-sm: 0 1px 2px rgba(2,6,23,.06), 0 1px 1px rgba(2,6,23,.04);
-  --shadow-md: 0 10px 20px rgba(2,6,23,.06), 0 3px 6px rgba(2,6,23,.04);
-  --shadow-lg: 0 20px 40px rgba(2,6,23,.07), 0 8px 16px rgba(2,6,23,.05);
-
-  /* Largura do conteúdo */
-  --container: 1100px;
-
-  /* Gradientes da marca */
-  --gradient-brand: linear-gradient(135deg, var(--brand-blue-600), var(--brand-lilac-500));
-  --gradient-soft: radial-gradient(1200px 600px at 10% -10%, rgba(37,99,235,.08), transparent 50%),
-                   radial-gradient(800px 400px at 110% 10%, rgba(167,139,250,.10), transparent 40%);
+:root{
+  --bg: #f7fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted:#64748b;
+  --brand:#2563eb;
+  --ring: rgba(37, 99, 235, .35);
+  --border:#e2e8f0;
 }
 
-/* Dark mode automático (opcional) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0B1020; /* azul noite */
-    --bg-soft: #0F162D;
-    --fg: #E5EAF5;
-    --muted: #B6C0D8;
-    --border: rgba(255,255,255,.12);
-    --shadow-sm: 0 1px 2px rgba(0,0,0,.35);
-    --shadow-md: 0 10px 20px rgba(0,0,0,.4);
-    --shadow-lg: 0 20px 40px rgba(0,0,0,.45);
-  }
+/* Reset básico e tipografia */
+html{scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+  background:var(--bg);
+  color:var(--text);
 }
 
-/* ------------------------------
-   2) Elementos base
--------------------------------- */
-body::before { /* véu suave azul/lilás */
-  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1; background: var(--gradient-soft);
+/* Cabeçalho fixo */
+header{
+  position:sticky; top:0; z-index:20;
+  background:rgba(255,255,255,.85);
+  -webkit-backdrop-filter:saturate(180%) blur(8px);
+  backdrop-filter:saturate(180%) blur(8px);
+  border-bottom:1px solid var(--border);
+  padding:.75rem 1rem;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.titulo{font-size:1rem; font-weight:700; letter-spacing:.2px; margin:0}
+.sub{font-size:.9rem;color:var(--muted); margin:0}
+
+/* Layout principal */
+main{max-width:960px; margin:0 auto; padding:1rem}
+.lista{display:grid; gap:1rem}
+
+/* Cartões/temas expansíveis */
+details.tema{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:.875rem;
+  overflow:hidden;
+  box-shadow:0 1px 1px rgba(0,0,0,.03);
+}
+details.tema[open]{box-shadow:0 4px 16px rgba(2,6,23,.06)}
+
+/* Cabeçalho do tema */
+summary{
+  list-style:none; cursor:pointer; user-select:none;
+  display:flex; align-items:center; gap:.9rem;
+  padding:.85rem 1rem;
+}
+summary::-webkit-details-marker{display:none}
+summary:focus-visible{outline:2px solid var(--brand); outline-offset:4px; border-radius:.5rem}
+summary:hover{background:#f8fafc}
+
+.thumb{
+  width:56px; height:56px; object-fit:cover; flex:0 0 56px;
+  border-radius:.75rem; border:1px solid var(--border); background:#f1f5f9;
+}
+.cabeca{display:flex; flex-direction:column; gap:.15rem}
+.cabeca h2{font-size:1rem; margin:0}
+.cabeca p{font-size:.9rem; margin:0; color:var(--muted)}
+
+.indicador{margin-left:auto; width:18px; height:18px; color:var(--muted); transition:transform .2s ease}
+details[open] .indicador{transform:rotate(90deg)}
+
+/* Conteúdo do tema */
+article{padding:0 1rem 1rem}
+article h3{margin:1rem 0 .5rem; font-size:1rem}
+article p{line-height:1.6}
+article ul{margin:.25rem 0 .75rem 1rem}
+.nota{color:var(--muted); font-size:.95rem}
+
+/* Botão flutuante para voltar ao topo */
+a.botao-topo{
+  position:fixed; right:1rem; bottom:1rem;
+  background:var(--brand); color:#fff; text-decoration:none;
+  padding:.6rem .8rem; border-radius:.75rem;
+  box-shadow:0 6px 16px var(--ring); font-size:.9rem;
+}
+a.botao-topo:hover{opacity:.95}
+
+/* Modo escuro (opcional, automático) */
+@media (prefers-color-scheme: dark){
+  :root{--bg:#0b1220; --card:#0f172a; --text:#e5e7eb; --muted:#94a3b8; --border:#1f2937}
+  header{background:rgba(15,23,42,.8); border-color:var(--border)}
+  summary:hover{background:#111827}
 }
 
-::selection { background: color-mix(in oklab, var(--brand-lilac-400) 60%, white); color: #0B0B15; }
-
-h1, h2, h3 { line-height: 1.2; letter-spacing: -0.015em; color: var(--fg); }
-h1 { font-size: clamp(2rem, 3vw + 1rem, 3.2rem); }
-h2 { font-size: clamp(1.5rem, 2vw + .6rem, 2.2rem); margin-top: var(--space-8); }
-h3 { font-size: clamp(1.25rem, 1.2vw + .6rem, 1.5rem); margin-top: var(--space-6); }
-
-p { margin: 0 0 var(--space-4); color: var(--fg); }
-small, .muted { color: var(--muted); }
-
-hr { border: 0; height: 1px; background: var(--border); margin: var(--space-8) 0; }
-
-/* Links com efeito gradiente */
-a { color: var(--brand-blue-600); text-decoration: none; }
-a:hover { color: var(--brand-lilac-500); }
-a.button { text-decoration: none; }
-
-/* Acessibilidade de foco */
-:focus-visible { outline: 3px solid color-mix(in oklab, var(--focus) 85%, white); outline-offset: 2px; border-radius: .25rem; }
-
-/* ------------------------------
-   3) Layouts & containers
--------------------------------- */
-.container { width: min(100%, var(--container)); margin-inline: auto; padding-inline: var(--space-4); }
-.section { padding: var(--space-12) 0; }
-.section-header { margin-bottom: var(--space-6); }
-.section-title { display: inline-block; font-weight: 800; background: var(--gradient-brand); -webkit-background-clip: text; background-clip: text; color: transparent; }
-
-/* Cabeçalho/rodapé */
-.header { position: sticky; top: 0; backdrop-filter: saturate(140%) blur(8px); background: color-mix(in oklab, var(--bg) 80%, white); border-bottom: 1px solid var(--border); z-index: 50; }
-.nav { display: flex; align-items: center; gap: var(--space-4); padding: var(--space-3) 0; }
-.nav a { color: var(--fg); font-weight: 600; padding: .5rem .75rem; border-radius: .75rem; }
-.nav a:hover { background: color-mix(in oklab, var(--brand-blue-500) 12%, transparent); color: var(--brand-blue-600); }
-.footer { border-top: 1px solid var(--border); background: color-mix(in oklab, var(--bg) 96%, white); padding: var(--space-8) 0; }
-
-/* Hero com gradiente azul→lilás */
-.hero { background: var(--gradient-brand); color: white; padding: clamp(3rem, 6vw, 6rem) 0; }
-.hero .eyebrow { text-transform: uppercase; letter-spacing: .12em; opacity: .9; }
-.hero h1 { color: white; }
-.hero p { color: color-mix(in oklab, white 88%, var(--brand-lilac-300)); max-width: 60ch; }
-
-/* ------------------------------
-   4) Cartões e superfícies
--------------------------------- */
-.card { background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius-xl); box-shadow: var(--shadow-sm); padding: var(--space-6); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
-.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: color-mix(in oklab, var(--brand-lilac-400) 24%, var(--border)); }
-.card .title { font-weight: 700; margin-bottom: var(--space-2); }
-.card .subtitle { color: var(--muted); margin-bottom: var(--space-4); }
-
-/* Destaques azul/lilás */
-.badge { display: inline-flex; align-items: center; gap: .4ch; padding: .35rem .6rem; font-size: .8rem; border-radius: 999px; border: 1px solid var(--border); background: color-mix(in oklab, var(--brand-blue-500) 10%, white); color: var(--brand-blue-700); }
-.badge.lilac { background: color-mix(in oklab, var(--brand-lilac-400) 12%, white); color: var(--brand-lilac-600); }
-
-/* ------------------------------
-   5) Botões
--------------------------------- */
-.btn { --btn-bg: var(--brand-blue-600); --btn-fg: white; --btn-shadow: var(--shadow-md);
-  display: inline-flex; align-items: center; justify-content: center; gap: .6ch; padding: .75rem 1rem; font-weight: 700; border: 0; border-radius: var(--radius); color: var(--btn-fg); background: var(--btn-bg); box-shadow: var(--btn-shadow); cursor: pointer; transition: transform .15s ease, filter .2s ease, box-shadow .2s ease; }
-.btn:hover { filter: brightness(1.05); box-shadow: var(--shadow-lg); }
-.btn:active { transform: translateY(1px); }
-.btn:focus-visible { outline: 3px solid color-mix(in oklab, var(--focus) 70%, white); outline-offset: 2px; }
-.btn.secondary { --btn-bg: var(--brand-lilac-500); }
-.btn.ghost { --btn-bg: transparent; --btn-fg: var(--brand-blue-700); box-shadow: none; border: 1px solid color-mix(in oklab, var(--brand-blue-500) 35%, var(--border)); }
-.btn.ghost:hover { background: color-mix(in oklab, var(--brand-blue-500) 10%, transparent); }
-
-/* ------------------------------
-   6) Tipografia auxiliar
--------------------------------- */
-.lead { font-size: clamp(1.05rem, .6vw + 1rem, 1.25rem); color: var(--muted); max-width: 65ch; }
-.kicker { text-transform: uppercase; letter-spacing: .12em; font-weight: 800; color: var(--brand-blue-600); }
-.text-gradient { background: var(--gradient-brand); -webkit-background-clip: text; background-clip: text; color: transparent; }
-
-/* ------------------------------
-   7) Grelha de galeria (fotos)
--------------------------------- */
-.gallery-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(12, 1fr); }
-.gallery-grid .item { grid-column: span 12; border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-md); }
-.gallery-grid .item img { width: 100%; height: 100%; object-fit: cover; }
-
-@media (min-width: 640px) {
-  .gallery-grid .item { grid-column: span 6; }
-}
-@media (min-width: 1024px) {
-  .gallery-grid .item { grid-column: span 4; }
-}
-
-/* ------------------------------
-   8) Tabelas (para listas e relatórios)
--------------------------------- */
-.table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-.table th, .table td { padding: .85rem 1rem; border-bottom: 1px solid var(--border); text-align: left; }
-.table thead th { background: color-mix(in oklab, var(--brand-blue-600) 13%, white); color: var(--fg); font-weight: 800; }
-.table tbody tr:hover { background: color-mix(in oklab, var(--brand-lilac-400) 8%, white); }
-
-/* ------------------------------
-   9) Utilitárias de cor (azul & lilás)
--------------------------------- */
-.bg-blue { background: var(--brand-blue-600); color: white; }
-.bg-lilac { background: var(--brand-lilac-500); color: white; }
-.text-blue { color: var(--brand-blue-700); }
-.text-lilac { color: var(--brand-lilac-600); }
-.border-blue { border-color: color-mix(in oklab, var(--brand-blue-600) 60%, var(--border)); }
-.border-lilac { border-color: color-mix(in oklab, var(--brand-lilac-500) 60%, var(--border)); }
-.bg-gradient-brand { background: var(--gradient-brand); color: white; }
-
-/* ------------------------------
-   10) Componentes de conteúdo (páginas do tema)
--------------------------------- */
-.article { max-width: 70ch; }
-.article h2, .article h3 { scroll-margin-top: 6rem; }
-.callout { padding: var(--space-4); border: 1px solid var(--border); border-radius: var(--radius); background: color-mix(in oklab, var(--brand-lilac-300) 12%, white); }
-.callout.info { background: color-mix(in oklab, var(--brand-blue-500) 10%, white); }
-
-/* Citações/aspas de destaque */
-.quote { position: relative; padding: var(--space-6); border-left: 4px solid var(--brand-lilac-500); background: color-mix(in oklab, var(--brand-lilac-300) 10%, white); border-radius: 0 var(--radius) var(--radius) 0; }
-
-/* ------------------------------
-   11) Animações suaves
--------------------------------- */
-.reveal { opacity: 0; transform: translateY(6px); animation: reveal .6s ease forwards; }
-@keyframes reveal { to { opacity: 1; transform: none; } }
-
-/* ------------------------------
-   12) Impressão (legível, sem fundos pesados)
--------------------------------- */
-@media print {
-  body { background: white; color: #111827; }
-  .hero, .bg-gradient-brand { background: white !important; color: #111827 !important; }
-  a { color: #1F2937; text-decoration: underline; }
-  .btn, .badge { box-shadow: none !important; background: white !important; color: #1F2937 !important; border: 1px solid #D1D5DB !important; }
+/* Acessibilidade: reduzir animações se preferido */
+@media (prefers-reduced-motion: reduce){
+  .indicador{transition:none}
 }
