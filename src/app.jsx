@@ -3,6 +3,22 @@ import { BrowserRouter, Routes, Route, Link, useParams, useLocation, Navigate } 
 import { Menu, Home, ArrowLeft, ExternalLink } from "lucide-react";
 
 // =====================
+// Textos introdutórios por área (cartões largos)
+// =====================
+const INTRO = {
+  discriminacao: {
+    titulo: "Sobre discriminação e preconceitos",
+    texto:
+      "A discriminação assenta em estereótipos e resulta em tratamento desigual de pessoas ou grupos. Pode ser direta (atos e políticas explícitas) ou indireta/estrutural, quando regras aparentemente neutras criam barreiras. Combater a discriminação exige consciência crítica, educação, participação e práticas que removam obstáculos à igualdade real."
+  },
+  direitos: {
+    titulo: "Sobre direitos e igualdade",
+    texto:
+      "Direitos e igualdade significam garantir, na prática, oportunidades e dignidade para todas as pessoas. Para lá das leis, é essencial promover acessibilidade, representatividade e processos transparentes. Organizações públicas e privadas têm um papel decisivo na criação de ambientes seguros e inclusivos."
+  }
+};
+
+// =====================
 // Dados do site
 // =====================
 
@@ -61,7 +77,7 @@ const AREAS = [
           definicao:
             "O racismo é a discriminação baseada na cor da pele ou na origem étnica de uma pessoa. Ele pode ser explícito, como insultos e ataques físicos, ou estrutural, quando uma sociedade cria barreiras que dificultam o acesso de determinados grupos a oportunidades.",
           consequencias:
-            "Afeta oportunidades de emprego, acesso à educação, saúde e bem‑estar emocional. Perpetua desigualdades económicas e sociais e dificulta a mobilidade social e o reconhecimento de identidades culturais.",
+            "Afeta oportunidades de emprego, acesso à educação, saúde e bem-estar emocional. Perpetua desigualdades económicas e sociais e dificulta a mobilidade social e o reconhecimento de identidades culturais.",
           exemplos: [
             "Perfilamento racial em abordagens policiais.",
             "Menor representatividade de pessoas negras e indígenas em cargos de liderança.",
@@ -77,11 +93,11 @@ const AREAS = [
           empresas: [
             "Criar programas de inclusão e equidade racial.",
             "Oferecer formação sobre diversidade e preconceito inconsciente.",
-            "Contratar e promover profissionais de grupos sub‑representados.",
+            "Contratar e promover profissionais de grupos sub-representados.",
           ],
           livros: [
             "Pequeno Manual Antirracista – Djamila Ribeiro",
-            "Entre o Mundo e Eu – Ta‑Nehisi Coates",
+            "Entre o Mundo e Eu – Ta-Nehisi Coates",
           ],
           artigos: [
             "O impacto do racismo estrutural na economia – Instituto de Estudos Sociais",
@@ -99,7 +115,7 @@ const AREAS = [
           definicao:
             "Sexismo é a discriminação baseada no sexo ou género, expressa em estereótipos, exclusão e violência.",
           consequencias:
-            "Afeta rendimentos, segurança, participação política e bem‑estar. Gera teto de vidro e desigualdade salarial.",
+            "Afeta rendimentos, segurança, participação política e bem-estar. Gera teto de vidro e desigualdade salarial.",
           exemplos: [
             "Interrupções constantes a mulheres em reuniões (manterrupting).",
             "Expectativa de que tarefas de cuidado recaíam só sobre mulheres.",
@@ -144,7 +160,7 @@ const AREAS = [
             "Garantir direitos, proteção legal e educação sexual inclusiva para reduzir estigma e violência.",
           empresas: [
             "Benefícios que incluam parceiros do mesmo sexo.",
-            "Planos de saúde que incluam cuidados trans‑afirmativos.",
+            "Planos de saúde que incluam cuidados trans-afirmativos.",
             "Grupos de afinidade e formação contínua.",
           ],
         },
@@ -203,7 +219,7 @@ const AREAS = [
           mudar:
             "Promover saúde sem estigma e incluir medidas de acessibilidade e conforto.",
           empresas: [
-            "Políticas anti‑assédio claras.",
+            "Políticas anti-assédio claras.",
             "Uniformes e EPI em tamanhos variados.",
             "Comunicação sem estereótipos.",
           ],
@@ -548,7 +564,6 @@ const Header = () => {
       {open && (
         <div
           className="sm:hidden"
-          // fecha ao clicar fora do painel
           onClick={() => setOpen(false)}
         >
           {/* overlay */}
@@ -560,7 +575,6 @@ const Header = () => {
             role="dialog"
             aria-modal="true"
             className="fixed top-2 right-2 left-2 rounded-2xl border border-slate-200 bg-white shadow-xl p-2"
-            // impedir que o clique dentro feche o menu
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between px-2 py-1">
@@ -598,6 +612,7 @@ const Footer = () => (
 );
 
 const AreaBlock = ({ area }) => {
+  const intro = INTRO[area.id];
   return (
     <section id={area.id} className="max-w-6xl mx-auto px-4 py-12">
       <div className="flex items-end justify-between mb-6">
@@ -606,7 +621,19 @@ const AreaBlock = ({ area }) => {
           <p className="text-slate-600 mt-1">{area.descricao}</p>
         </div>
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        {/* Cartão largo introdutório */}
+        {intro && (
+          <div className="rounded-2xl border border-slate-200 bg-white shadow-sm p-5 md:col-span-2 xl:col-span-3">
+            <h3 className="text-lg font-semibold text-slate-900">{intro.titulo}</h3>
+            <p className="mt-2 text-slate-700 leading-relaxed">
+              {intro.texto}
+            </p>
+          </div>
+        )}
+
+        {/* Cartões dos temas */}
         {area.itens.map((item) => (
           <Link
             key={item.slug}
@@ -829,13 +856,11 @@ const HomePage = () => {
 
 export default function App() {
   return (
-    <BrowserRouter> {/* sem basename no user site */}
+    <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path=":areaSlug/:slug" element={<TemaPage />} />
-        {/* …as restantes rotas que já tens… */}
       </Routes>
     </BrowserRouter>
   );
 }
-
