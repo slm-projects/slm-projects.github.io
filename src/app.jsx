@@ -810,25 +810,9 @@ const HomePage = () => {
   return (
     <main>
       <Header />
-      <section className="max-w-6xl mx-auto px-4 py-10">
-        <div className="bg-gradient-to-br from-sky-50 to-indigo-50 border border-sky-100 rounded-3xl p-6 sm:p-10">
-          <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900">
-            Responsabilidade Social
-          </h1>
-          <p className="mt-3 text-slate-700 max-w-2xl">
-            Plataforma educativa com foco em discriminação, preconceitos, direitos e igualdade. Explore os
-            cartões para saber mais e partilhar conhecimento.
-          </p>
-          <div className="mt-6 flex items-center gap-3">
-            <a href="#discriminacao" className="px-4 py-2 rounded-xl bg-slate-900 text-white text-sm font-medium shadow">
-              Ver Discriminação
-            </a>
-            <a href="#direitos" className="px-4 py-2 rounded-xl bg-white border border-slate-300 text-slate-900 text-sm font-medium shadow-sm">
-              Ver Direitos & Igualdade
-            </a>
-          </div>
-        </div>
-      </section>
+
+      {/* Página inicial sem hero */}
+      <div className="max-w-6xl mx-auto px-4 pt-6" />
 
       {AREAS.map((area) => (
         <AreaBlock key={area.id} area={area} />
