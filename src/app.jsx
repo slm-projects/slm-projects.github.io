@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, Link, useParams, useLocation, Navigate } from "react-router-dom";
 import { Menu, Home, ArrowLeft, ExternalLink } from "lucide-react";
 
@@ -482,20 +482,106 @@ const sample3 = (arr, excludeSlug) => {
 // =====================
 
 const Header = () => {
+  const [open, setOpen] = useState(false);
+
+  // fecha ao carregar na tecla Esc
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  const navItems = [
+    { href: "/", label: "Início" },
+    { href: "#discriminacao", label: "Discriminação" },
+    { href: "#direitos", label: "Direitos & Igualdade" },
+    { href: "#sobre", label: "Sobre" },
+  ];
+
+  const NavLinks = ({ onClick }) => (
+    <>
+      {navItems.map((n) => (
+        <a
+          key={n.href}
+          href={n.href}
+          onClick={() => {
+            onClick?.();
+          }}
+          className="block px-3 py-2 rounded-xl text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+        >
+          {n.label}
+        </a>
+      ))}
+    </>
+  );
+
   return (
     <header className="sticky top-0 z-50 backdrop-blur bg-white/70 border-b border-slate-200">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 text-slate-900">
-          <Home className="w-5 h-5" />
+          <Home className="w-5 h-5" aria-hidden="true" />
           <span className="font-semibold">Responsabilidade Social</span>
         </Link>
-        <nav className="hidden sm:flex items-center gap-5 text-sm text-slate-700">
-          <a href="#discriminacao" className="hover:text-slate-900">Discriminação</a>
-          <a href="#direitos" className="hover:text-slate-900">Direitos & Igualdade</a>
-          <a href="#sobre" className="hover:text-slate-900">Sobre</a>
+
+        {/* Navegação desktop */}
+        <nav className="hidden sm:flex items-center gap-1 text-sm">
+          <NavLinks />
         </nav>
-        <button className="sm:hidden p-2 rounded-xl border border-slate-200"><Menu className="w-5 h-5" /></button>
+
+        {/* Botão do menu mobile */}
+        <button
+          type="button"
+          aria-label="Abrir menu"
+          aria-haspopup="true"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen((v) => !v)}
+          className="sm:hidden p-2 rounded-xl border border-slate-200"
+        >
+          <Menu className="w-5 h-5" aria-hidden="true" />
+        </button>
       </div>
+
+      {/* Overlay + painel mobile */}
+      {open && (
+        <div
+          className="sm:hidden"
+          // fecha ao clicar fora do painel
+          onClick={() => setOpen(false)}
+        >
+          {/* overlay */}
+          <div className="fixed inset-0 bg-black/20" />
+
+          {/* painel */}
+          <div
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            className="fixed top-2 right-2 left-2 rounded-2xl border border-slate-200 bg-white shadow-xl p-2"
+            // impedir que o clique dentro feche o menu
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-2 py-1">
+              <span className="text-sm font-semibold text-slate-900">
+                Menu
+              </span>
+              <button
+                type="button"
+                className="p-2 rounded-xl hover:bg-slate-100"
+                onClick={() => setOpen(false)}
+                aria-label="Fechar menu"
+              >
+                ✕
+              </button>
+            </div>
+            <nav className="grid gap-1 py-1">
+              <NavLinks onClick={() => setOpen(false)} />
+            </nav>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
