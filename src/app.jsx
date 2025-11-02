@@ -1,5 +1,5 @@
 import React, { useMemo, useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route, Link, useParams, useLocation, Navigate } from "react-router-dom";
+import { HashRouter as BrowserRouter, Routes, Route, Link, useParams, useLocation, Navigate } from "react-router-dom";
 import { Menu, Home, ArrowLeft, ExternalLink } from "lucide-react";
 
 // =====================
